@@ -1,0 +1,66 @@
+baseurl      = "localhost"
+title        = "chartexamples"
+languageCode = "en-us"
+theme        = "hello-friend-ng"
+paginate     = 10
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  homeSubtitle = "Examples of charts with different libraries"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you like
+  enableSharingButtons = true
+
+  # Metadata mostly used in document's head
+  description = "Examples of charts with different libraries"
+  keywords = "chart, blog, d3, chart.js, examples"
+  images = [""]
+    
+[languages]
+  [languages.en]
+    title = "Chart Examples"
+    subtitle = "Examples of charts with different libraries"
+    keywords = ""
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "chartexamples.com"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "chartexamples.com"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "charts"
+    name       = "Charts"
+    url        = "/charts"
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "blog/"
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "about/"
+
+[author]
+  name = "Alex Chirkin"
+
+[params.footer]
+    author = true
+
+    topText = []
+    bottomText = [
+      "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
+    ]
