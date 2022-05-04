@@ -1,4 +1,4 @@
-baseurl      = "localhost"
+baseurl      = "https://chartexample.com"
 title        = "chartexample"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
