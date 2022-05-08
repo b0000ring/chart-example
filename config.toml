@@ -23,6 +23,12 @@ paginate     = 10
   description = "Examples of charts with different libraries"
   keywords = "chart, blog, d3, chart.js, examples"
   images = [""]
+
+[permalinks]
+  posts = "/posts/:year/:month/:title/"
+
+disableReadOtherPosts = false
+
     
 [languages]
   [languages.en]
