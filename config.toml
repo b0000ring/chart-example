@@ -10,6 +10,9 @@ paginate     = 10
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
+  customCSS = ["/css/style.css"]
+  customJS = ["/js/d3.js"]
+
   # Subtitle for home
   homeSubtitle = "Examples of charts with different libraries"
 
