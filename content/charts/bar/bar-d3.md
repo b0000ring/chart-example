@@ -1,9 +1,8 @@
 ---
   cover: 'covers/d3.png'
   title: 'D3'
+  chart: '/charts/bar/d3.js'
 ---
-
-{{< include-js "/charts/bar/d3.js" >}}
 
 ``` js
 function makeBar() {     

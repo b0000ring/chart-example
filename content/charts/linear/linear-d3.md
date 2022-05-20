@@ -1,10 +1,8 @@
 ---
   cover: 'covers/d3.png'
   title: 'D3'
+  chart: '/charts/linear/d3.js'
 ---
-
-{{< include-js "/charts/linear/d3.js" >}}
-
 
 ``` js
 function makeLinear() {
