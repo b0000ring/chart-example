@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Alex Chirkin ">
-<meta name="description" content="function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 25  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg." />
+<meta name="description" content="function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 50  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -43,15 +43,15 @@
 
 
 <meta itemprop="name" content="D3">
-<meta itemprop="description" content="function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 25  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&#39;#chart&#39;)  // getting root element width  const width = parseInt(svg.">
+<meta itemprop="description" content="function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 50  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&#39;#chart&#39;)  // getting root element width  const width = parseInt(svg.">
 
-<meta itemprop="wordCount" content="513"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="535"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
 
 <meta name="twitter:title" content="D3"/>
-<meta name="twitter:description" content="function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 25  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&#39;#chart&#39;)  // getting root element width  const width = parseInt(svg."/>
+<meta name="twitter:description" content="function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 50  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&#39;#chart&#39;)  // getting root element width  const width = parseInt(svg."/>
 
 
 
@@ -138,7 +138,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// min data item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">paddingY</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">paddingY</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">paddingX</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// selecting root element for plot
@@ -160,7 +160,7 @@
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">paddingY</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">paddingY</span>])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of X axis 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">axisTop</span>(<span style="color:#a6e22e">scaleX</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">axisBottom</span>(<span style="color:#a6e22e">scaleX</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// tick format needed for custom value for every tick
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// i &lt; data.length needed to hide the last unnecessary tick label
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">tickFormat</span>((<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">`item </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>)
@@ -225,10 +225,13 @@
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;circle&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating g element for X axis and calling its component function
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>).<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisX</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;x-axis&#39;</span>).<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisX</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// transform in using to move the axis to bottom of the plot
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// -1 is slightly correction to make entire axis visible
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(0, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// +5 is slightly correction to make entire axis visible
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(0, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">paddingY</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying rotation to x axis labels to make plot more responsive
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;.x-axis .tick text&#34;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;transform&#34;</span>, <span style="color:#e6db74">&#34;translate(-20, 20) rotate(-45)&#34;</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating g element for Y axis and calling its component function
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>).<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisY</span>)
 </span></span><span style="display:flex;"><span>

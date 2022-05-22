@@ -27,8 +27,7 @@ I also have a personal page on itch.io (with not so much to see on it)
       <guid>https://chartexample.com/about/</guid>
       <description>chartexample.com - my personal blog where I implement different types of charts by using set of javascript (and sometimes other) libraries.
 You can find information about me on my LinkedIn page
-Feel free to contact me by E-Mail - hello@alexchirkin.me
-If you find some error or want to contribute to this project - GitHub.</description>
+Feel free to contact me by E-Mail - hello@alexchirkin.me If you find some error or want to contribute to this project - GitHub .</description>
     </item>
     
     <item>
@@ -37,7 +36,7 @@ If you find some error or want to contribute to this project - GitHub.</descript
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/bar/bar-d3/</guid>
-      <description>function makeBar() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 25  const paddingX = 50  // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg.</description>
+      <description>function makeBar() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 50  const paddingX = 50  // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg.</description>
     </item>
     
     <item>
@@ -46,7 +45,7 @@ If you find some error or want to contribute to this project - GitHub.</descript
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/linear/linear-d3/</guid>
-      <description>function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 25  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg.</description>
+      <description>function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 50  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg.</description>
     </item>
     
   </channel>
