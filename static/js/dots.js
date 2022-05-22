@@ -1,5 +1,10 @@
 function init() {
   let timeout = null
+  const container = document.querySelector('.container')
+  const resize_ob = new ResizeObserver(() => {
+    clearTimeout(timeout)
+    timeout = setTimeout(changeSize, 100)
+  });
   let data = new Array(500).fill('')
     .map(() => ({
       x: Math.floor(Math.random() * 100),
@@ -42,19 +47,14 @@ function init() {
       .attr('cy', (d) => scaleY(d.y))
   }
 
-
-  function reset() {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      width = svgElement.getBoundingClientRect().width
-      height = svgElement.getBoundingClientRect().height
-    
-      scaleX = d3.scaleLinear().domain([0, 100]).range([0, width])
-      scaleY = d3.scaleLinear().domain([0, 100]).range([0, height])
-    }, 100)
+  function changeSize() {
+    width = svgElement.getBoundingClientRect().width
+    height = svgElement.getBoundingClientRect().height
+    scaleX = d3.scaleLinear().domain([0, 100]).range([0, width])
+    scaleY = d3.scaleLinear().domain([0, 100]).range([0, height])
   }
-  
-  window.onresize = reset
+
+  resize_ob.observe(container)
   setInterval(update, 10)
 }
 
