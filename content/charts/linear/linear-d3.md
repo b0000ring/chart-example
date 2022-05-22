@@ -13,7 +13,7 @@ function makeLinear() {
   const max = 10
   // min data item value
   const min = 0 
-  const paddingY = 25
+  const paddingY = 50
   const paddingX = 50
 
   // selecting root element for plot
@@ -35,7 +35,7 @@ function makeLinear() {
     .range([paddingY, height - paddingY])
 
   // creating of X axis 
-  const axisX = d3.axisTop(scaleX)
+  const axisX = d3.axisBottom(scaleX)
     // tick format needed for custom value for every tick
     // i < data.length needed to hide the last unnecessary tick label
     .tickFormat((d, i) => i < data.length ? `item ${i + 1}` : '')
@@ -100,10 +100,13 @@ function makeLinear() {
     .append('circle')
 
   // creating g element for X axis and calling its component function
-  svg.append('g').call(axisX)
+  svg.append('g').attr('class', 'x-axis').call(axisX)
     // transform in using to move the axis to bottom of the plot
-    // -1 is slightly correction to make entire axis visible
-    .attr('transform', `translate(0, ${height - 1})`)
+    // +5 is slightly correction to make entire axis visible
+    .attr('transform', `translate(0, ${height - paddingY + 5})`)
+  // applying rotation to x axis labels to make plot more responsive
+  d3.selectAll(".x-axis .tick text")
+    .attr("transform", "translate(-20, 20) rotate(-45)")
   // creating g element for Y axis and calling its component function
   svg.append('g').call(axisY)
 

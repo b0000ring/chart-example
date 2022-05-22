@@ -13,7 +13,7 @@ function makeBar() {
   const max = 10
   // min data item value
   const min = 0 
-  const paddingY = 25
+  const paddingY = 50
   const paddingX = 50
   // selecting root element for plot
   const svg = d3.select('#chart')
@@ -40,7 +40,6 @@ function makeBar() {
         '#E6F598', '#FFFFBF', '#FEE08B', '#FDAE61',
         '#F46D43', '#D53E4F', '#9E0142'
       ]) 
-  console.log(data.length - 1)
   // creating of X axis 
   const axisX = d3.axisBottom(scaleX)
     // tick format needed for custom value for every tick
@@ -81,10 +80,13 @@ function makeBar() {
   // creating g element for Y axis and calling its component function
   svg.append('g').call(axisY)
   // creating g element for X axis and calling its component function
-  svg.append('g').call(axisX)
+  svg.append('g').attr('class', 'x-axis').call(axisX)
       // transform in using to move the axis to bottom of the plot
       // -1 is slightly correction to make entire axis visible
       .attr('transform', `translate(0, ${height - paddingY})`) 
+  // applying rotation to x axis labels to make plot more responsive
+  d3.selectAll(".x-axis .tick text")
+    .attr("transform", "translate(-20, 20) rotate(-45)")
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and
@@ -110,4 +112,5 @@ function makeBar() {
   // calling change function every second
   setInterval(change, 1000)
 }
+
 ```
