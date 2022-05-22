@@ -1,4 +1,4 @@
 ---
   cover: 'covers/linear-chart.png'
-  title: 'Linear chart'
+  title: 'Linear'
 ---
