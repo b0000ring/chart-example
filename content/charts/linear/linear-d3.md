@@ -83,12 +83,12 @@ function makeLinear() {
     .attr('id', 'lines')
     // creating empty selection of path elements
     .selectAll('path')
-      // applying data
-      .data(data)
-      // selecting all new data-element connections
-      .enter()
-      // appending actual element to every selection item
-      .append('path')
+    // applying data
+    .data(data)
+    // selecting all new data-element connections
+    .enter()
+    // appending actual element to every selection item
+    .append('path')
   
   // applying dots to the chart
   // same steps as for lines above

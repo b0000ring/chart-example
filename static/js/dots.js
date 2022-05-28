@@ -6,13 +6,20 @@ function init() {
     timeout = setTimeout(changeSize, 100)
   });
   let data = new Array(500).fill('')
-    .map(() => ({
-      x: Math.floor(Math.random() * 100),
-      y: Math.floor(Math.random() * 100),
-      movex: Math.random() < 0.5 ? -0.002 : 0.002,
-      movey: Math.random() < 0.5 ? -0.002 : 0.002,
-      opacity: (Math.random() * 5) / 10,
-    }))
+    .map(() => {
+      const speedx = (Math.random() + 0.5) / 100
+      const speedy = (Math.random() + 0.5) / 100
+      const directionx = Math.random() < 0.5
+      const directiony = Math.random() < 0.5
+      return {
+        x: Math.floor(Math.random() * 100),
+        y: Math.floor(Math.random() * 100),
+        movex: directionx ? -speedx : speedx,
+        movey: directiony ? -speedy : speedy,
+        opacity: (Math.random() * 5) / 10,
+        size: Math.floor((Math.random() * 5)) + 5
+      }
+    })
   let svg = d3.select('#dots')
   let svgElement = document.getElementById('dots')
   let width = svgElement.getBoundingClientRect().width
@@ -25,7 +32,7 @@ function init() {
     .data(data)
     .enter()
     .append('circle')
-    .attr('r', 5)
+    .attr('r', d => d.size)
     .attr('cx', (d) => scaleX(d.x))
     .attr('cy', (d) => scaleY(d.y))
 
@@ -35,8 +42,8 @@ function init() {
         ...item,
         x: item.x + item.movex,
         y: item.y + item.movey,
-        movex: (item.x + item.movex) > width || (item.x + item.movex) < 0 ? item.movex * -1 : item.movex,
-        movey: (item.y + item.movey) > height || (item.y + item.movey) < 0 ? item.movey * -1 : item.movey
+        movex: scaleX(item.x + item.movex) > width || (item.x + item.movex) < 0 ? item.movex * -1 : item.movex,
+        movey: scaleY(item.y + item.movey) > height || (item.y + item.movey) < 0 ? item.movey * -1 : item.movey
       }
     })
     const selection = svg.selectAll('circle')
