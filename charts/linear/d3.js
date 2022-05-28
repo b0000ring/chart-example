@@ -16,13 +16,13 @@ function makeLinear() {
   // getting root element height
   const height = parseInt(svg.style('height')) 
 
-  // creating linear scaling for X
-  // data.length is used because scaling by X
+  // creating linear scaling for X axis
+  // data.length is used because scaling for X axis
   // depends on item count, not values 
   const scaleX = d3.scaleLinear()
     .domain([0, data.length])
     .range([paddingX, width - paddingX])
-  // creating linear scaling for Y
+  // creating linear scaling for Y axis
   const scaleY = d3.scaleLinear()
     .domain([min, max])
     .range([paddingY, height - paddingY])

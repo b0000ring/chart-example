@@ -48,5 +48,14 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me If you find some error 
       <description>function makeLinear() {  //empty data set  let data = [0, 0, 0, 0, 0, 0, 0, 0]   // max data item value  const max = 10  // min data item value  const min = 0  const paddingY = 50  const paddingX = 50   // selecting root element for plot  const svg = d3.select(&amp;#39;#chart&amp;#39;)  // getting root element width  const width = parseInt(svg.</description>
     </item>
     
+    <item>
+      <title>D3</title>
+      <link>https://chartexample.com/charts/scatter/scatter-d3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chartexample.com/charts/scatter/scatter-d3/</guid>
+      <description>function makeScatter() {  // max data item value  const max = 100  // min data item value  const min = 0   // generating dataset  const data = new Array(100).fill().map(() =&amp;gt; ({  x: (Math.random() * max) | 0,  y: (Math.random() * max) | 0  }))   // setting values for margins of svg content  const margin = {top: 10, left: 50, right: 10, bottom: 50}   // selecting svg container  const svg = d3.</description>
+    </item>
+    
   </channel>
 </rss>
