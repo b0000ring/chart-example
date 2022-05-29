@@ -75,7 +75,7 @@
 
 #dots {
   position: absolute;
-  height: calc(100vh - 67px);
+  height: calc(100vh - 70px);
   z-index: -1;
   width: 100%;
   top: 0;
