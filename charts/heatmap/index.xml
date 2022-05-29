@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Heatmap on chartexample.com</title>
+    <link>https://chartexample.com/charts/heatmap/</link>
+    <description>Recent content in Heatmap on chartexample.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><atom:link href="https://chartexample.com/charts/heatmap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>D3</title>
+      <link>https://chartexample.com/charts/heatmap/heatmap-d3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chartexample.com/charts/heatmap/heatmap-d3/</guid>
+      <description>function makeHeatmap() {  // max data item value  const max = 4  // min data item value  const min = 1  // generating dataset  const data = new Array(64)  .fill()  .map(() =&amp;gt; (Math.random() * max + min) | 0)  // how much items could be in row  const rowLength = 8  // how much rows will be in plot  const rows = (data.</description>
+    </item>
+    
+  </channel>
+</rss>

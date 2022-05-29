@@ -41,6 +41,15 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me If you find some error 
     
     <item>
       <title>D3</title>
+      <link>https://chartexample.com/charts/heatmap/heatmap-d3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chartexample.com/charts/heatmap/heatmap-d3/</guid>
+      <description>function makeHeatmap() {  // max data item value  const max = 4  // min data item value  const min = 1  // generating dataset  const data = new Array(64)  .fill()  .map(() =&amp;gt; (Math.random() * max + min) | 0)  // how much items could be in row  const rowLength = 8  // how much rows will be in plot  const rows = (data.</description>
+    </item>
+    
+    <item>
+      <title>D3</title>
       <link>https://chartexample.com/charts/linear/linear-d3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
