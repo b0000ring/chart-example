@@ -15,11 +15,15 @@
   </url><url>
     <loc>https://chartexample.com/charts/bar/</loc>
   </url><url>
+    <loc>https://chartexample.com/charts/box/</loc>
+  </url><url>
     <loc>https://chartexample.com/categories/</loc>
   </url><url>
     <loc>https://chartexample.com/charts/</loc>
   </url><url>
     <loc>https://chartexample.com/charts/bar/bar-d3/</loc>
+  </url><url>
+    <loc>https://chartexample.com/charts/box/box-d3/</loc>
   </url><url>
     <loc>https://chartexample.com/charts/heatmap/heatmap-d3/</loc>
   </url><url>
@@ -28,6 +32,8 @@
     <loc>https://chartexample.com/charts/pie/pie-d3/</loc>
   </url><url>
     <loc>https://chartexample.com/charts/scatter/scatter-d3/</loc>
+  </url><url>
+    <loc>https://chartexample.com/charts/tree/tree-d3/</loc>
   </url><url>
     <loc>https://chartexample.com/charts/heatmap/</loc>
   </url><url>
@@ -38,5 +44,7 @@
     <loc>https://chartexample.com/charts/scatter/</loc>
   </url><url>
     <loc>https://chartexample.com/tags/</loc>
+  </url><url>
+    <loc>https://chartexample.com/charts/tree/</loc>
   </url>
 </urlset>
