@@ -69,19 +69,11 @@ function makeLinear() {
       .attr('stroke', '#3288BD')
   }
 
-  // applying lines to the chart
-  // creating group element for lines
-  const lines = svg.append('g')
+  // applying line to the chart
+  // creating path element for line
+  const lineElement = svg.append('path')
     // setting id for lines group
-    .attr('id', 'lines')
-    // creating empty selection of path elements
-    .selectAll('path')
-      // applying data
-      .data(data)
-      // selecting all new data-element connections
-      .enter()
-      // appending actual element to every selection item
-      .append('path')
+    .attr('id', 'line')
   
   // applying dots to the chart
   // same steps as for lines above
@@ -105,8 +97,8 @@ function makeLinear() {
 
   // calling dot component function and passing circles selection
   dot(circles)
-  // calling line component function and passing circles selection
-  line(lines)
+  // calling line component function and passing lineElement selection
+  line(lineElement)
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and
@@ -119,7 +111,7 @@ function makeLinear() {
     // calling dot and line component functions and 
     // passing selections with updated data and transition
     dot(circles.data(data).transition().duration(300))
-    line(lines.data(data).transition().duration(300))
+    line(lineElement.data(data).transition().duration(300))
   }
 
   // calling change function every second
