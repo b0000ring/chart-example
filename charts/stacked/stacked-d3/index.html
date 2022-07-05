@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Alex Chirkin ">
+<meta name="description" content="function makeStacked() { //empty data set let data = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]] // max data item value const max = 10 // min data item value const min = 0 const padding = 30 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://chartexample.com/charts/stacked/stacked-d3/" />
+
+
+    <title>
+        
+            D3 :: chartexample.com  — Examples of charts with different libraries
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="D3">
+<meta itemprop="description" content="function makeStacked() { //empty data set let data = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]] // max data item value const max = 10 // min data item value const min = 0 const padding = 30 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg.">
+
+<meta itemprop="wordCount" content="568"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://chartexample.com"/>
+
+<meta name="twitter:title" content="D3"/>
+<meta name="twitter:description" content="function makeStacked() { //empty data set let data = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]] // max data item value const max = 10 // min data item value const min = 0 const padding = 30 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg."/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">chartexample.com</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/charts">Charts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post chart">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+  
+        <article>
+            <h2 class="post-title"><a href="https://chartexample.com/charts/stacked/stacked-d3/">D3</a></h2>
+            <ul id="breadcrumbs">
+  <li><a href="/">Home</a></li><li><a href="/charts">Charts</a></li><li><a href="/charts/stacked">Stacked</a></li><li><a href="/charts/stacked/stacked-d3">D3</a></li></ul>
+
+            
+
+            <div class="post-content">
+                <svg id="chart"></div>
+                <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeStacked</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//empty data set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// max data item value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// min data item value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// selecting root element for plot
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#chart&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element width
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;width&#39;</span>)) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element height
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;height&#39;</span>)) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating linear scaling for X axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// depends on item count, not values 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting X scale domain
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// from 0 to 4 because data arrays legnth is 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting scale range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>])
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating linear scaling for Y axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting Y scale domain
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Y is representing values so using min and max value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// max and min should be swapped because value should be represented
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// from down to top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">max</span>, <span style="color:#a6e22e">min</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of colors scale
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleColors</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleQuantize</span>()
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span>])
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">range</span>([
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;#5E4FA2&#39;</span>, <span style="color:#e6db74">&#39;#3288BD&#39;</span>, <span style="color:#e6db74">&#39;#66C2A5&#39;</span>, <span style="color:#e6db74">&#39;#ABDDA4&#39;</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;#E6F598&#39;</span>, <span style="color:#e6db74">&#39;#FFFFBF&#39;</span>, <span style="color:#e6db74">&#39;#FEE08B&#39;</span>, <span style="color:#e6db74">&#39;#FDAE61&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;#F46D43&#39;</span>, <span style="color:#e6db74">&#39;#D53E4F&#39;</span>, <span style="color:#e6db74">&#39;#9E0142&#39;</span>
+</span></span><span style="display:flex;"><span>      ]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of X axis 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">axisBottom</span>(<span style="color:#a6e22e">scaleX</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting ticks for x axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// according to data array length
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">ticks</span>(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// settin x axis tick format
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">tickFormat</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// for better readability increase the value on 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// to show values from 1 to 5 (0 to 4 by default)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of Y axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// swapping range values because they should increase
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// from bottom to top. its opposite by default
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">axisLeft</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>])
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">padding</span>])
+</span></span><span style="display:flex;"><span>    ) 
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating area generator function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">area</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">area</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying options to area generator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">area</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// x coord according to data item index
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">x</span>((<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// y0 is static and should be the bottom of the plot
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">y0</span>(<span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// y1 is the data item value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">y1</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating group for plot items
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">items</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating empty selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// joining data to new path elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting d attr of every path element by calling area generatir
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">area</span>(<span style="color:#a6e22e">d</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting fill color
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColors</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating wrapper element for Y axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// calling Y axis component function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisY</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting Y axis position to be on the plot left
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// -5 is slight corretion for better visibility
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">padding</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">5</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, 0)`</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating wrapper element for X axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// calling X axis component function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisX</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting X axis position to be on the plot bottom
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// +5 is slight corretion for better visibility
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(0, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function for showing dynamic data and view change
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// it generates new data, applies to plot and
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// changes the view with animation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">change</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// updating of dataset
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">map</span>(
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">item</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">map</span>(
+</span></span><span style="display:flex;"><span>        () =&gt; Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">/</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// selecting of all path elements on plot
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// applying data to items selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">data</span>) 
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// creating transition
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">transition</span>() 
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting transition duration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">duration</span>(<span style="color:#ae81ff">300</span>) 
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting new value for d attribute of every path element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">area</span>(<span style="color:#a6e22e">d</span>))
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// calling change function every second
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">setInterval</span>(<span style="color:#a6e22e">change</span>, <span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+        <script src="/charts/stacked/d3.js"></script>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            <span><a href="https://chartexample.com">Alex Chirkin</a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.feebdc8d801e3fb1791305e362b6d11557f029604dd5b3c27e2686bc88787ee90ae1ccf0afe81bd7d959d7617cfe1fc73062aa82b4e1fa830d6941193d2cbddf.js" integrity="sha512-/uvcjYAeP7F5EwXjYrbRFVfwKWBN1bPCfiaGvIh4fukK4czwr&#43;gb19lZ12F8/h/HMGKqgrTh&#43;oMNaUEZPSy93w=="></script>
+
+
+    
+        <script src="/js/d3.min.js"></script>
+    
+
+
+    </body>
+</html>
