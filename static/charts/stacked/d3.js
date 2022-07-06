@@ -83,7 +83,7 @@ function makeStacked() {
     .data(data)
     // joining data to new path elements
     .join('path')
-    // setting d attr of every path element by calling area generatir
+    // setting d attr of every path element by calling area generator
     .attr('d', d => area(d))
     // setting fill color
     .attr('fill', (d, i) => scaleColors(i))
