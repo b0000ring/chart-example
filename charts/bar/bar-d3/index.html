@@ -45,7 +45,7 @@
 <meta itemprop="name" content="D3">
 <meta itemprop="description" content="function makeBar() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] // max data item value const max = 10 // min data item value const min = 0 const paddingY = 50 const paddingX = 50 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg.">
 
-<meta itemprop="wordCount" content="514"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="536"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -146,7 +146,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;width&#39;</span>)) 
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element height
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;height&#39;</span>)) 
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// calculating width for each bar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">barWidth</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">paddingX</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating linear scaling for Y
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>])
@@ -170,6 +171,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// tick format needed for custom value for every tick
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// i &lt; data.length needed to hide the last unnecessary tick label
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">tickFormat</span>((<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">`data </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">tickSize</span>(<span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of Y axis
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// swapping range values because they should increase
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// from bottom to top. its opposite by default
@@ -196,7 +198,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting element width 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// padding * 2 because applied padding
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">//  from both sides should be taken into account
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;width&#39;</span>, (<span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">paddingX</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;width&#39;</span>, <span style="color:#a6e22e">barWidth</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting element height
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;height&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">paddingY</span>) 
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// filling element with color from color scale
@@ -211,7 +213,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(0, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">paddingY</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>) 
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying rotation to x axis labels to make plot more responsive
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;.x-axis .tick text&#34;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;transform&#34;</span>, <span style="color:#e6db74">&#34;translate(-20, 20) rotate(-45)&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying some transform to x axis label for better readability
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;transform&#34;</span>, <span style="color:#e6db74">&#34;translate(20, 20) rotate(-45)&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function for showing dynamic data and view change
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// it generates new data, applies to plot and

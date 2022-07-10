@@ -19,7 +19,7 @@ function makeStacked() {
   // depends on item count, not values 
   const scaleX = d3.scaleLinear()
     // setting X scale domain
-    // from 0 to 4 because data arrays legnth is 5
+    // from 0 to 4 because inner data array length is 5
     .domain([0, 4])
     // setting scale range
     .range([padding, width - padding])

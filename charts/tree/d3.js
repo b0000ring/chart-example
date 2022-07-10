@@ -88,7 +88,7 @@ function makeTree() {
     .style('stroke-width', 2)
 
 
-  // applying tree structure to hierarchy
+  // applying tree layout to hierarchy
   d3.tree()
     // setting nodes size
     .nodeSize([

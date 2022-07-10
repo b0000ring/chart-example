@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Alex Chirkin ">
-<meta name="description" content="function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) .attr(&amp;#39;cursor&amp;#39;, &amp;#39;pointer&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // count radius based on container width or height // (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3." />
+<meta name="description" content="function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) .attr(&amp;#39;cursor&amp;#39;, &amp;#39;pointer&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // count radius based on width or height (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -43,15 +43,15 @@
 
 
 <meta itemprop="name" content="D3">
-<meta itemprop="description" content="function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) .attr(&#39;cursor&#39;, &#39;pointer&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg.style(&#39;height&#39;)) // count radius based on container width or height // (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3.">
+<meta itemprop="description" content="function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) .attr(&#39;cursor&#39;, &#39;pointer&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg.style(&#39;height&#39;)) // count radius based on width or height (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3.">
 
-<meta itemprop="wordCount" content="450"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="444"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
 
 <meta name="twitter:title" content="D3"/>
-<meta name="twitter:description" content="function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) .attr(&#39;cursor&#39;, &#39;pointer&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg.style(&#39;height&#39;)) // count radius based on container width or height // (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3."/>
+<meta name="twitter:description" content="function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&#39;#chart&#39;) .attr(&#39;cursor&#39;, &#39;pointer&#39;) // getting root element width const width = parseInt(svg.style(&#39;width&#39;)) // getting root element height const height = parseInt(svg.style(&#39;height&#39;)) // count radius based on width or height (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3."/>
 
 
 
@@ -142,8 +142,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;width&#39;</span>)) 
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element height
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;height&#39;</span>))
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// count radius based on container width or height
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  (the smallest one) and applying the padding
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// count radius based on width or height (the smallest one) and applying the padding
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">radius</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of colors scale
@@ -170,11 +169,11 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pieData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pie</span>(<span style="color:#a6e22e">data</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating group element for chart content
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">items</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying transform to put pie chart to center of svg
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// creating empty selection of path elements
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating empty selection of path elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying processed data
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">pieData</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// selecting all new data-element connections
@@ -219,11 +218,10 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// removing old popup
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">remove</span>()
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// creating container for popup
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">group</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">group</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting id for popup container
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;popup&#39;</span>)
 </span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;pointer-events&#39;</span>, <span style="color:#e6db74">&#39;none&#39;</span>)
-</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// creating rect element for popup
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">group</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;rect&#39;</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting x position

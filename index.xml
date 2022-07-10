@@ -89,7 +89,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me If you find some error 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/pie/pie-d3/</guid>
-      <description>function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) .attr(&amp;#39;cursor&amp;#39;, &amp;#39;pointer&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // count radius based on container width or height // (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3.</description>
+      <description>function makePie() { // empty data set let data = [10, 5, 2] const padding = 10 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) .attr(&amp;#39;cursor&amp;#39;, &amp;#39;pointer&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // count radius based on width or height (the smallest one) and applying the padding const radius = Math.min(width, height) / 2 - padding // creating of colors scale const scaleColors = d3.</description>
     </item>
     
     <item>
