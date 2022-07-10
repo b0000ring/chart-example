@@ -37,11 +37,11 @@ function makePie() {
   const pieData = pie(data)
 
   // creating group element for chart content
-  svg.append('g')
+  const items  = svg.append('g')
     // applying transform to put pie chart to center of svg
     .attr('transform', `translate(${width / 2}, ${height / 2})`)
-    // creating empty selection of path elements
-    .selectAll('path')
+  // creating empty selection of path elements
+  items.selectAll('path')
     // applying processed data
     .data(pieData)
     // selecting all new data-element connections
@@ -86,11 +86,10 @@ function makePie() {
       // removing old popup
       .remove()
     // creating container for popup
-    const group = svg.append('g')
+    const group = items.append('g')
       // setting id for popup container
       .attr('id', 'popup')
       .style('pointer-events', 'none')
-      .attr('transform', `translate(${width / 2}, ${height / 2})`)
     // creating rect element for popup
     group.append('rect')
       // setting x position

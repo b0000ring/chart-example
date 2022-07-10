@@ -27,7 +27,7 @@ function makeLinear() {
   // data.length is used because scaling for X axis
   // depends on item count, not values 
   const scaleX = d3.scaleLinear()
-    .domain([0, data.length])
+    .domain([0, data.length - 1])
     .range([paddingX, width - paddingX])
   // creating linear scaling for Y axis
   const scaleY = d3.scaleLinear()
@@ -36,9 +36,10 @@ function makeLinear() {
 
   // creating of X axis 
   const axisX = d3.axisBottom(scaleX)
+    // setting amount of ticks  according to data items count
+    .ticks(data.length)
     // tick format needed for custom value for every tick
-    // i < data.length needed to hide the last unnecessary tick label
-    .tickFormat((d, i) => i < data.length ? `item ${i + 1}` : '')
+    .tickFormat((d, i) => `item ${i + 1}`)
   // creating of Y axis
   // swapping range values because they should increase
   // from bottom to top. its opposite by default

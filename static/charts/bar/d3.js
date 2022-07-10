@@ -14,7 +14,8 @@ function makeBar() {
   const width = parseInt(svg.style('width')) 
   // getting root element height
   const height = parseInt(svg.style('height')) 
-
+  // calculating width for each bar
+  const barWidth = (width - paddingX * 2) / data.length
   // creating linear scaling for Y
   const scaleY = d3.scaleLinear()
     .domain([min, max])
@@ -38,6 +39,7 @@ function makeBar() {
     // tick format needed for custom value for every tick
     // i < data.length needed to hide the last unnecessary tick label
     .tickFormat((d, i) => i < data.length ? `data ${i + 1}` : '')
+    .tickSize(0)
   // creating of Y axis
   // swapping range values because they should increase
   // from bottom to top. its opposite by default
@@ -64,7 +66,7 @@ function makeBar() {
       // setting element width 
       // padding * 2 because applied padding
       //  from both sides should be taken into account
-      .attr('width', (width - paddingX * 2) / data.length)
+      .attr('width', barWidth)
       // setting element height
       .attr('height', d => scaleY(d) - paddingY) 
       // filling element with color from color scale
@@ -79,7 +81,8 @@ function makeBar() {
       .attr('transform', `translate(0, ${height - paddingY})`) 
   // applying rotation to x axis labels to make plot more responsive
   d3.selectAll(".x-axis .tick text")
-    .attr("transform", "translate(-20, 20) rotate(-45)")
+    // applying some transform to x axis label for better readability
+    .attr("transform", "translate(20, 20) rotate(-45)")
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and
