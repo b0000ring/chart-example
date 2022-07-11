@@ -4,7 +4,7 @@
   {{ else }}
     <img src="{{ .Params.Cover | absURL }}" alt="{{ .Params.CoverAlt | plainify | default .Title }}"/>
   {{ end }}
-  <span class="post-title">{{.Title}}</span>
+  <span class="post-title">{{.Params.Short}}</span>
 
   {{ if .Params.CoverCaption }}
     <figcaption class="center">{{ .Params.CoverCaption | markdownify }}</figcaption>

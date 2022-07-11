@@ -1,6 +1,8 @@
 ---
   cover: 'covers/d3.png'
-  title: 'D3'
+  title: 'Bar chart D3 example'
+  short: 'D3'
+  description: 'Bar chart D3.js example'
   chart: '/charts/bar/d3.js'
 ---
 

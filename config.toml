@@ -23,7 +23,7 @@ paginate     = 10
   enableSharingButtons = true
 
   # Metadata mostly used in document's head
-  description = "Examples of charts with different libraries"
+  description = "Blog about creating charts and data visualizations"
   keywords = "chart, blog, d3, chart.js, examples"
   images = [""]
 
@@ -36,8 +36,8 @@ disableReadOtherPosts = false
 [languages]
   [languages.en]
     title = "chartexample.com"
-    subtitle = "Examples of charts with different libraries"
-    keywords = ""
+    subtitle = "Blog about creating charts and data visualizations"
+    keywords = "chartexample.com, blog, charts, d3, visualizations, plots"
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 

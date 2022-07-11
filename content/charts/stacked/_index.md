@@ -1,4 +1,6 @@
 ---
   cover: 'covers/stacked-chart.png'
-  title: 'Stacked'
+  title: 'Stacked chart examples'
+  short: 'Stacked'
+  description: 'Stacked chart examples'
 ---

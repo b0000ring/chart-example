@@ -1,6 +1,8 @@
 ---
   cover: 'covers/d3.png'
-  title: 'D3'
+  title: 'Scatter chart D3 example'
+  short: 'Scatter'
+  description: 'Scatter chart D3.js example'
   chart: '/charts/scatter/d3.js'
 ---
 

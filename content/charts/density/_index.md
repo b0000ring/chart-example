@@ -1,4 +1,6 @@
 ---
   cover: 'covers/density-chart.png'
-  title: 'Density'
+  title: 'Density chart examples'
+  short: 'Density'
+  description: 'Density chart examples'
 ---

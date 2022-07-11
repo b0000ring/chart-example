@@ -1,6 +1,8 @@
 ---
   cover: 'covers/d3.png'
-  title: 'D3'
+  title: 'Pie chart D3 example'
+  short: 'D3'
+  description: 'Pie chart D3.js example'
   chart: '/charts/pie/d3.js'
 ---
 

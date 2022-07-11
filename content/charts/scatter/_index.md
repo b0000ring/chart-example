@@ -1,4 +1,6 @@
 ---
   cover: 'covers/scatter-chart.png'
-  title: 'Scatter'
+  title: 'Scatter chart examples'
+  short: 'Scatter'
+  description: 'Scatter chart examples'
 ---

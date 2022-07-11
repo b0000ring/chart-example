@@ -1,6 +1,8 @@
 ---
   cover: 'covers/d3.png'
-  title: 'D3'
+  title: 'Stacked chart D3 example'
+  short: 'D3'
+  description: 'Stacked chart D3.js example'
   chart: '/charts/stacked/d3.js'
 ---
 

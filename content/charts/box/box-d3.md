@@ -1,7 +1,9 @@
 ---
   cover: 'covers/d3.png'
-  title: 'D3'
+  title: 'Box chart D3 example'
+  short: 'D3'
   chart: '/charts/box/d3.js'
+  description: 'Box chart D3 example'
 ---
 
 ``` js

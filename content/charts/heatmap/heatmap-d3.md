@@ -1,6 +1,8 @@
 ---
   cover: 'covers/d3.png'
-  title: 'D3'
+  title: 'Heatmap chart D3 example'
+  short: 'D3'
+  description: 'Heatmap chart D3.js example'
   chart: '/charts/heatmap/d3.js'
 ---
 

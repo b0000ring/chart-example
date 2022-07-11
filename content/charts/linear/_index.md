@@ -1,4 +1,6 @@
 ---
   cover: 'covers/linear-chart.png'
-  title: 'Linear'
+  title: 'Linear chart examples'
+  short: 'Linear'
+  description: 'Linear chart examples'
 ---

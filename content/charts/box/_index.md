@@ -1,4 +1,6 @@
 ---
   cover: 'covers/box-chart.png'
-  title: 'Box'
+  title: 'Box chart examples'
+  short: 'Box'
+  description: 'Box chart examples'
 ---

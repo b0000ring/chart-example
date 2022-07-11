@@ -1,6 +1,8 @@
 +++
-title = "About"
+title = "About chartexample.com"
 aliases = ["about","contact"]
+tags = ["blog", "author", "about"]
+description = "About chartexample.com blog and author page"
 [ author ]
   name = "Alex Chirkin"
 +++
