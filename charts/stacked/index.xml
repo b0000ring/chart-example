@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Stacked on chartexample.com</title>
+    <title>Stacked chart examples on chartexample.com</title>
     <link>https://chartexample.com/charts/stacked/</link>
-    <description>Recent content in Stacked on chartexample.com</description>
+    <description>Recent content in Stacked chart examples on chartexample.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><atom:link href="https://chartexample.com/charts/stacked/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>D3</title>
+      <title>Stacked chart D3 example</title>
       <link>https://chartexample.com/charts/stacked/stacked-d3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
