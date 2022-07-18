@@ -45,7 +45,7 @@
 <meta itemprop="name" content="Network chart D3 example">
 <meta itemprop="description" content="Network chart D3.js example">
 
-<meta itemprop="wordCount" content="0"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="724"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -130,7 +130,228 @@
 
             <div class="post-content">
                 <svg id="chart"></div>
-                <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"></code></pre></div>
+                <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeNetwork</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//data set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item1&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">connections</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;item2&#39;</span>, <span style="color:#e6db74">&#39;item3&#39;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item2&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">connections</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;item4&#39;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item3&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">connections</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;item2&#39;</span>, <span style="color:#e6db74">&#39;item1&#39;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item4&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">connections</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;item1&#39;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item5&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">connections</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;item1&#39;</span>, <span style="color:#e6db74">&#39;item4&#39;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item6&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">connections</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;item1&#39;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// selecting root element for plot
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#chart&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element width
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;width&#39;</span>)) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element height
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;height&#39;</span>)) 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// generating network datastructure from the data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// by using custom function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">structure</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getStructure</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying network layout to structure items
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">network</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getNetwork</span>(<span style="color:#a6e22e">structure</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting all links data between network nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">links</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">network</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">getLinks</span>()).<span style="color:#a6e22e">flat</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating linear scaling for Y
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>), <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>)])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>]) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating linear scaling for X
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>), <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>)])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of colors scale
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleColors</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleQuantize</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">network</span>.<span style="color:#a6e22e">length</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;#5E4FA2&#39;</span>, <span style="color:#e6db74">&#39;#3288BD&#39;</span>, <span style="color:#e6db74">&#39;#66C2A5&#39;</span>, <span style="color:#e6db74">&#39;#ABDDA4&#39;</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;#E6F598&#39;</span>, <span style="color:#e6db74">&#39;#FFFFBF&#39;</span>, <span style="color:#e6db74">&#39;#FEE08B&#39;</span>, <span style="color:#e6db74">&#39;#FDAE61&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;#F46D43&#39;</span>, <span style="color:#e6db74">&#39;#D53E4F&#39;</span>, <span style="color:#e6db74">&#39;#9E0142&#39;</span>
+</span></span><span style="display:flex;"><span>    ]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating drag behaviour
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dragHandler</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">drag</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting general drag callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;drag&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">d</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// getting mouse pointer coords relatiely svg
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">pointer</span>(<span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">node</span>())
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// updating coords directly in data object (d param)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scaleX</span>.<span style="color:#a6e22e">invert</span>(<span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scaleY</span>.<span style="color:#a6e22e">invert</span>(<span style="color:#a6e22e">y</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// calling update function to redraw the chart
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">update</span>()
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating wrapper for all chart components
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">items</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// render connections between nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// creating empty selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;line&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying connections data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">links</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying element-data connections and creating line elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;line&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying line coords
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x1&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x1</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y1&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y1</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x2&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x2</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y2</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying lines color
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// render nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// creating empty collection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//  applying nodes data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">network</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying element-data connections and creating g elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// g element used because each node contain circle and text
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// so its a wrapper
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting node element class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// for future selections
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;node&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// appending circles to each node
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;circle&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying circle coords
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;cx&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;cy&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying circle radius
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#e6db74">&#39;10&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying each circle color
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColors</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting cursor style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;cursor&#39;</span>, <span style="color:#e6db74">&#39;pointer&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying text for each node
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;text&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting text value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">text</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">id</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting popup text element coords
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// +15 is a slight correction for better visibility
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying drag behavious to selection of all circle elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// which represents nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">dragHandler</span>(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;circle&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function which create structure with linked object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// from flat data array
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getStructure</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// getting initial items structure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">item</span>, <span style="color:#a6e22e">i</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span>] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">item</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting connections
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">item</span> =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">connections</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">connections</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">item</span>])
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span>].<span style="color:#a6e22e">connections</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">connections</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function which creates network layout from 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// structured data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getNetwork</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// spacing between nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">spacing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">entry</span>, <span style="color:#a6e22e">i</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// getting previous generated node object or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// default object with coords for the first one
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prev</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">:</span> {<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> [, <span style="color:#a6e22e">item</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">entry</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// generating node coords
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">spacing</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">spacing</span>) <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">sin</span>(<span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getLinks</span>,
+</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">item</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">x</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">y</span>,
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// function that returns array of objects
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// with coordinates of linked nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getLinks</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">connections</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">link</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">link</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">id</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">connection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">id</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">x1</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">y1</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">x2</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">x</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">y2</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// general update callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">update</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// generating new links from network layout
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">links</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">network</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">getLinks</span>()).<span style="color:#a6e22e">flat</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// render connections 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;.node&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">network</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;line&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">links</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">join</span>()
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x1&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x1</span>))
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y1&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y1</span>))
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x2&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x2</span>))
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y2</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// render nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;circle&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;cx&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>))
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;cy&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;text&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
             </div>
         </article>
 

@@ -13,7 +13,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/network/network-d3/</guid>
-      <description></description>
+      <description>function makeNetwork() { //data set const data = [ { id: &amp;#39;item1&amp;#39;, connections: [&amp;#39;item2&amp;#39;, &amp;#39;item3&amp;#39;], }, { id: &amp;#39;item2&amp;#39;, connections: [&amp;#39;item4&amp;#39;], }, { id: &amp;#39;item3&amp;#39;, connections: [&amp;#39;item2&amp;#39;, &amp;#39;item1&amp;#39;], }, { id: &amp;#39;item4&amp;#39;, connections: [&amp;#39;item1&amp;#39;], }, { id: &amp;#39;item5&amp;#39;, connections: [&amp;#39;item1&amp;#39;, &amp;#39;item4&amp;#39;], }, { id: &amp;#39;item6&amp;#39;, connections: [&amp;#39;item1&amp;#39;], }, ] // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.</description>
     </item>
     
   </channel>
