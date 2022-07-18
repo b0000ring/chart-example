@@ -105,7 +105,6 @@ function makeTree() {
       nodeWidth + nodeSeparation
     ])(nodes)
 
-
   // applying links to the plot
   // creating empty selection of path elements
   const links = g.selectAll("path")
@@ -207,7 +206,6 @@ function makeTree() {
   }
   // zoom event callback
   function onzoom({ transform }) {
-    console.log('asd')
     // setting new transform coords for items container
     // because this is an element which should be
     // changed on zoom or scrolling
