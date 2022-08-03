@@ -1,10 +1,10 @@
 function init() {
   let timeout = null
-  const container = document.querySelector('.container')
-  const resize_ob = new ResizeObserver(() => {
-    clearTimeout(timeout)
-    timeout = setTimeout(changeSize, 100)
-  });
+  let svgElement = document.getElementById('dots')
+  let width = svgElement.getBoundingClientRect().width
+  let height = svgElement.getBoundingClientRect().height
+  let scaleX = d3.scaleLinear().domain([0, 100]).range([0, width])
+  let scaleY = d3.scaleLinear().domain([0, 100]).range([0, height])
   let data = new Array(500).fill('')
     .map(() => {
       const speedx = (Math.random() + 0.5) / 100
@@ -20,13 +20,14 @@ function init() {
         size: Math.floor((Math.random() * 5)) + 5
       }
     })
-  let svg = d3.select('#dots')
-  let svgElement = document.getElementById('dots')
-  let width = svgElement.getBoundingClientRect().width
-  let height = svgElement.getBoundingClientRect().height
 
-  let scaleX = d3.scaleLinear().domain([0, 100]).range([0, width])
-  let scaleY = d3.scaleLinear().domain([0, 100]).range([0, height])
+  const svg = d3.select('#dots')
+    .style('opacity', '0')
+  const container = document.querySelector('.container')
+  const resize_ob = new ResizeObserver(() => {
+    clearTimeout(timeout)
+    timeout = setTimeout(changeSize, 100)
+  });
 
   svg.selectAll('circle')
     .data(data)
@@ -37,6 +38,9 @@ function init() {
     .attr('cy', (d) => scaleY(d.y))
 
   function update() {
+    const selection = svg.selectAll('circle')
+    const opacity = parseFloat(svg.style('opacity'))
+
     data = data.map(item => {
       return {
         ...item,
@@ -46,7 +50,11 @@ function init() {
         movey: scaleY(item.y + item.movey) > height || (item.y + item.movey) < 0 ? item.movey * -1 : item.movey
       }
     })
-    const selection = svg.selectAll('circle')
+
+    if (opacity < 1) {
+      svg.style('opacity', opacity + 0.01)
+    }
+
     selection
       .data(data)
       .attr('opacity', (d) => d.opacity)
@@ -62,7 +70,7 @@ function init() {
   }
 
   resize_ob.observe(container)
-  setInterval(update, 10)
+  setInterval(update, 30)
 }
 
 window.onload = init
