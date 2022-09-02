@@ -7,7 +7,7 @@ function dots2() {
   const speed = 3
   const maxDeep = 256
 
-  let data = new Array(50).fill('')
+  let data = new Array(100).fill('')
     .map(() => {
       return getDefaultDot()
     })
@@ -57,7 +57,7 @@ function dots2() {
 
   function getDefaultDot() {
     return {
-      size: Math.floor((Math.random() * 5)) + 5,
+      size: Math.floor((Math.random() * 2)) + 2,
       x: Math.floor(Math.random() * width - width / 2),
       y: Math.floor(Math.random() * height - height / 2),
       z: Math.random() * maxDeep,
