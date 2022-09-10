@@ -40,21 +40,23 @@ function makeNetwork() {
   // by using custom function
   const structure = getStructure(data)
   // applying network layout to structure items
-  const network = getNetwork(structure)
+  applyRandomLayout(structure)
+  // getting all nodes data
+  const items = getNodes(structure)
   // getting all links data between network nodes
-  const links = network.map(item => item.getLinks()).flat()
+  const links = getLinks(structure)
   // creating linear scaling for Y
   const scaleY = d3.scaleLinear()
-    .domain([d3.min(network, d => d.y), d3.max(network, d => d.y)])
+    .domain([d3.min(items, d => d.y), d3.max(items, d => d.y)])
     .range([padding, height - padding]) 
   // creating linear scaling for X
   const scaleX = d3.scaleLinear()
-    .domain([d3.min(network, d => d.x), d3.max(network, d => d.x)])
+    .domain([d3.min(items, d => d.x), d3.max(items, d => d.x)])
     .range([padding, width - padding]) 
 
   // creating of colors scale
   const scaleColors = d3.scaleQuantize()
-    .domain([0, network.length])
+    .domain([0, items.length])
     .range([
       '#5E4FA2', '#3288BD', '#66C2A5', '#ABDDA4', 
       '#E6F598', '#FFFFBF', '#FEE08B', '#FDAE61',
@@ -76,28 +78,28 @@ function makeNetwork() {
     })
 
   // creating wrapper for all chart components
-  const items = svg.append('g')
+  const wrapper = svg.append('g')
 
   // render connections between nodes
   // creating empty selection
-  items.selectAll('line')
+  wrapper.selectAll('line')
     // applying connections data
     .data(links)
     // applying element-data connections and creating line elements
     .join('line')
     // applying line coords
-    .attr('x1', d => scaleX(d.x1))
-    .attr('y1', d => scaleY(d.y1))
-    .attr('x2', d => scaleX(d.x2))
-    .attr('y2', d => scaleY(d.y2))
+    .attr('x1', d => scaleX(d[0].x))
+    .attr('y1', d => scaleY(d[0].y))
+    .attr('x2', d => scaleX(d[1].x))
+    .attr('y2', d => scaleY(d[1].y))
     // applying lines color
     .attr('stroke', 'black')
 
   // render nodes
   // creating empty collection
-  const nodes = items.selectAll('g')
+  const nodes = wrapper.selectAll('g')
     //  applying nodes data
-    .data(network)
+    .data(items)
     // applying element-data connections and creating g elements
     // g element used because each node contain circle and text
     // so its a wrapper
@@ -147,67 +149,63 @@ function makeNetwork() {
       const connections = item.connections.map(item => result[item])
       result[item.id].connections = connections
     })
+
     return result
   }
 
-  // function which creates network layout from 
-  // structured data
-  function getNetwork(data) {
+  // function that applies random layout (without directions)
+  //  to network structure 
+  function applyRandomLayout(data) {
     // spacing between nodes
     const spacing = 100
-    const result = []
 
-    Object.entries(data).forEach((entry, i) => {
-      // getting previous generated node object or
-      // default object with coords for the first one
-      const prev = i > 0 ? result[i - 1] : {x: 0, y: 0}
-      const [, item] = entry
+    // applying coords for each element of structure
+    Object.values(data).forEach((item, i) => {
+      // getting previous generated node object 
+      // or default object with coords for the first one
+      const prev = i > 0 ? Object.values(data)[i - 1] : {x: 0, y: 0}
       // generating node coords
-      const x = prev.x + spacing
-      const y = (prev.y + spacing) * Math.sin(i)
-      result.push({
-        getLinks,
-        ...item,
-        x,
-        y,
+      item.x = prev.x + spacing
+      item.y = (prev.y + spacing) * Math.sin(i)
+    })
+  }
+
+  // function that returns array of node objects
+  function getNodes(layout) {
+    return Object.values(layout).map(node => node)
+  }
+
+  // function that returns array of arrays which represents
+  // connections between two nodes
+  function getLinks(layout) {
+    const links = []
+    Object.values(layout).forEach(node => {
+      node.connections.forEach(connection => {
+        links.push([node, connection])
       })
     })
-
-    // function that returns array of objects
-    // with coordinates of linked nodes
-    function getLinks() {
-      return this.connections.map(link => {
-        const id = link.data.id
-        const connection = result.find(item => item.data.id === id)
-        return {
-          x1: this.x,
-          y1: this.y,
-          x2: connection.x,
-          y2: connection.y
-        }
-      })
-    }
-
-    return result
+  
+    return links
   }
 
   // general update callback
   function update() {
-    // generating new links from network layout
-    const links = network.map(item => item.getLinks()).flat()
-
+    // generating updated links and nodes data from structure
+    const links = getLinks(structure)
+    const items = getNodes(structure)
+   
     // render connections 
-    const nodes = items.selectAll('.node')
-      .data(network)
+    const nodes = wrapper.selectAll('.node')
+      .data(items)
       .join('g')
     
-    items.selectAll('line')
+    wrapper.selectAll('line')
       .data(links)
       .join()
-      .attr('x1', d => scaleX(d.x1))
-      .attr('y1', d => scaleY(d.y1))
-      .attr('x2', d => scaleX(d.x2))
-      .attr('y2', d => scaleY(d.y2))
+      .attr('x1', d => scaleX(d[0].x))
+      .attr('y1', d => scaleY(d[0].y))
+      .attr('x2', d => scaleX(d[1].x))
+      .attr('y2', d => scaleY(d[1].y))
 
     // render nodes
     nodes.selectAll('circle')
