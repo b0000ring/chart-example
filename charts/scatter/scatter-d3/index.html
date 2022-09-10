@@ -173,7 +173,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting extent for zooming
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">scaleExtent</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>])
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting callback event (both scrolling and zooming)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;zoom&#34;</span>, <span style="color:#a6e22e">onzoom</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;zoom&#39;</span>, <span style="color:#a6e22e">onzoom</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">svg</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying zooming behaviour to plot
@@ -218,7 +218,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting new transform coords for items container
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// because this is an element which should be
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// changed on zoom or scrolling
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;transform&#34;</span>, <span style="color:#a6e22e">transform</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#a6e22e">transform</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// creating new scale for x with taking to account
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// applied transofrm
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newScaleX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">rescaleX</span>(<span style="color:#a6e22e">scaleX</span>)

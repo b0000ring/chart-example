@@ -34,7 +34,7 @@ function makeNetwork() {
   const width = parseInt(svg.style('width')) 
   // getting root element height
   const height = parseInt(svg.style('height')) 
-  const padding = 90
+  const padding = 70
 
   // generating network datastructure from the data
   // by using custom function
@@ -45,6 +45,7 @@ function makeNetwork() {
   const items = getNodes(structure)
   // getting all links data between network nodes
   const links = getLinks(structure)
+
   // creating linear scaling for Y
   const scaleY = d3.scaleLinear()
     .domain([d3.min(items, d => d.y), d3.max(items, d => d.y)])
@@ -53,7 +54,6 @@ function makeNetwork() {
   const scaleX = d3.scaleLinear()
     .domain([d3.min(items, d => d.x), d3.max(items, d => d.x)])
     .range([padding, width - padding]) 
-
   // creating of colors scale
   const scaleColors = d3.scaleQuantize()
     .domain([0, items.length])

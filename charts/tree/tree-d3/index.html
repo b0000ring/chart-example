@@ -171,7 +171,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting extent for zooming
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">scaleExtent</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>])
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting callback event (both scrolling and zooming)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;zoom&#34;</span>, <span style="color:#a6e22e">onzoom</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;zoom&#39;</span>, <span style="color:#a6e22e">onzoom</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating tree hierarchy from the data
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">hierarchy</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">children</span>)
@@ -224,13 +224,13 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying links to the plot
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// creating empty selection of path elements
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">links</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">links</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying links data from hierarchy
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>(<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">links</span>())
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// getting all new data connections
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">enter</span>()
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// appending real path elements 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;path&#34;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting path d param by using links generator
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">lnkMkr</span>(<span style="color:#a6e22e">d</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting stroke color
@@ -241,7 +241,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying nodes elements
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// creating empty selection
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">g</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;g&#34;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">g</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying nodes data from hierarchy
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// .descendants returns entire hierarchy
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>( <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">descendants</span>() )
@@ -326,7 +326,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting new transform coords for items container
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// because this is an element which should be
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// changed on zoom or scrolling
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">g</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;transform&#34;</span>, <span style="color:#a6e22e">transform</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">g</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#a6e22e">transform</span>)
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
