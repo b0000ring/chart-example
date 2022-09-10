@@ -54,6 +54,7 @@ function makeNetwork() {
   const items = getNodes(structure)
   // getting all links data between network nodes
   const links = getLinks(structure)
+
   // creating linear scaling for Y
   const scaleY = d3.scaleLinear()
     .domain([d3.min(items, d => d.y), d3.max(items, d => d.y)])
@@ -62,7 +63,6 @@ function makeNetwork() {
   const scaleX = d3.scaleLinear()
     .domain([d3.min(items, d => d.x), d3.max(items, d => d.x)])
     .range([padding, width - padding]) 
-
   // creating of colors scale
   const scaleColors = d3.scaleQuantize()
     .domain([0, items.length])

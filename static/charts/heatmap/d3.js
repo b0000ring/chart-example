@@ -50,7 +50,7 @@ function makeHeatmap() {
     .range([margin.top, height - margin.bottom])
   // creating color scale
   const scaleColor = d3.scaleQuantize().domain([min, max]).range([
-    "#5E4FA2", "#3288BD",  "#D53E4F", "#9E0142"
+    '#5E4FA2', '#3288BD',  '#D53E4F', '#9E0142'
   ])
   
   // creating X axis

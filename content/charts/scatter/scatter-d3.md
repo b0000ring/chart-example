@@ -56,7 +56,7 @@ function makeScatter() {
       // setting extent for zooming
       .scaleExtent([1, 2])
       // setting callback event (both scrolling and zooming)
-      .on("zoom", onzoom)
+      .on('zoom', onzoom)
 
   svg
     // applying zooming behaviour to plot
@@ -101,7 +101,7 @@ function makeScatter() {
     // setting new transform coords for items container
     // because this is an element which should be
     // changed on zoom or scrolling
-    items.attr("transform", transform)
+    items.attr('transform', transform)
     // creating new scale for x with taking to account
     // applied transofrm
     const newScaleX = transform.rescaleX(scaleX)

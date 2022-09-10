@@ -89,9 +89,9 @@ function makeBar() {
       // -1 is slightly correction to make entire axis visible
       .attr('transform', `translate(0, ${height - paddingY})`) 
   // applying rotation to x axis labels to make plot more responsive
-  d3.selectAll(".x-axis .tick text")
+  d3.selectAll('.x-axis .tick text')
     // applying some transform to x axis label for better readability
-    .attr("transform", "translate(20, 20) rotate(-45)")
+    .attr('transform', 'translate(20, 20) rotate(-45)')
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and

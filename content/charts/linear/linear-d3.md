@@ -100,8 +100,8 @@ function makeLinear() {
     // +5 is slightly correction to make entire axis visible
     .attr('transform', `translate(0, ${height - paddingY + 5})`)
   // applying rotation to x axis labels to make plot more responsive
-  d3.selectAll(".x-axis .tick text")
-    .attr("transform", "translate(-20, 20) rotate(-45)")
+  d3.selectAll('.x-axis .tick text')
+    .attr('transform', 'translate(-20, 20) rotate(-45)')
   // creating g element for Y axis and calling its component function
   svg.append('g').call(axisY)
 

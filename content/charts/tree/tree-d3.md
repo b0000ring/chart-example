@@ -54,7 +54,7 @@ function makeTree() {
       // setting extent for zooming
       .scaleExtent([1, 2])
       // setting callback event (both scrolling and zooming)
-      .on("zoom", onzoom)
+      .on('zoom', onzoom)
 
   // creating tree hierarchy from the data
   const nodes = d3.hierarchy(data, d => d.children)
@@ -107,13 +107,13 @@ function makeTree() {
 
   // applying links to the plot
   // creating empty selection of path elements
-  const links = g.selectAll("path")
+  const links = g.selectAll('path')
     // applying links data from hierarchy
     .data(nodes.links())
     // getting all new data connections
     .enter()
     // appending real path elements 
-    .append("path")
+    .append('path')
     // setting path d param by using links generator
     .attr('d', d => lnkMkr(d))
     // setting stroke color
@@ -124,7 +124,7 @@ function makeTree() {
 
   // applying nodes elements
   // creating empty selection
-  g.selectAll("g")
+  g.selectAll('g')
     // applying nodes data from hierarchy
     // .descendants returns entire hierarchy
     .data( nodes.descendants() )
@@ -209,7 +209,7 @@ function makeTree() {
     // setting new transform coords for items container
     // because this is an element which should be
     // changed on zoom or scrolling
-    g.attr("transform", transform)
+    g.attr('transform', transform)
   }
 }
 ```

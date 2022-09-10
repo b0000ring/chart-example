@@ -59,8 +59,8 @@ function makeStacked() {
     .tickFormat(function(d, i) {
       // for better readability increase the value on 1
       // to show values from 1 to 5 (0 to 4 by default)
-      return i + 1;
-    });
+      return i + 1
+    })
   
   // creating of Y axis
   // swapping range values because they should increase

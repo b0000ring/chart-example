@@ -58,7 +58,7 @@ function makeDensity() {
     // y1 is the data item value
     .y1(d => scaleY(d))
     // using curveBasis to set curve
-    .curve(d3.curveBasis);
+    .curve(d3.curveBasis)
 
   // creating group for plot items
   const items = svg.append('g')
