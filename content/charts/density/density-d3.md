@@ -15,7 +15,8 @@ function makeDensity() {
   const max = 10
   // min data item value
   const min = 0 
-  const padding = 30
+  // setting values for margins of svg content
+  const margin = {top: 20, left: 50, right: 30, bottom: 40}
   // selecting root element for plot
   const svg = d3.select('#chart')
   // getting root element width
@@ -26,13 +27,13 @@ function makeDensity() {
   // creating linear scaling for Y
   const scaleY = d3.scaleLinear()
     .domain([max, min])
-    .range([padding, height - padding]) 
+    .range([margin.top, height - margin.bottom]) 
   // creating linear scaling for X
   // data.length is used because we want scaling by X
   // depends on item count, not values 
   const scaleX = d3.scaleLinear()
     .domain([0, data.length - 1])
-    .range([padding, width - padding]) 
+    .range([margin.left, width - margin.right]) 
 
   // creating of X axis 
   const axisX = d3.axisBottom(scaleX)
@@ -43,7 +44,7 @@ function makeDensity() {
   const axisY = d3.axisRight(
     d3.scaleLinear()
       .domain([min, max])
-      .range([height - padding, padding])
+      .range([height - margin.bottom, margin.top])
   )
 
   // creating area generator function
@@ -54,7 +55,7 @@ function makeDensity() {
     // x coord according to data item index
     .x((d, i) => scaleX(i))
     // y0 is static and should be the bottom of the plot
-    .y0(height - padding)
+    .y0(height - margin.bottom)
     // y1 is the data item value
     .y1(d => scaleY(d))
     // using curveBasis to set curve
@@ -80,6 +81,8 @@ function makeDensity() {
   svg.append('g')
     // calling Y axis component function
     .call(axisY)
+    // adding slight alignment
+    .attr('transform', `translate(${margin.left - 30}, 0)`)
 
   // creating wrapper element for X axis
   svg.append('g')
@@ -87,7 +90,7 @@ function makeDensity() {
     .call(axisX)
     // setting X axis position to be on the plot bottom
     // +5 is slight corretion for better visibility
-    .attr('transform', `translate(0, ${height - padding + 5})`)
+    .attr('transform', `translate(0, ${height - margin.bottom + 5})`)
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and

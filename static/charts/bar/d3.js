@@ -6,8 +6,8 @@ function makeBar() {
   const max = 10
   // min data item value
   const min = 0 
-  const paddingY = 50
-  const paddingX = 50
+  // setting values for margins of svg content
+  const margin = {top: 50, left: 50, right: 30, bottom: 30}
   // selecting root element for plot
   const svg = d3.select('#chart')
   // getting root element width
@@ -15,17 +15,17 @@ function makeBar() {
   // getting root element height
   const height = parseInt(svg.style('height')) 
   // calculating width for each bar
-  const barWidth = (width - paddingX * 2) / data.length
+  const barWidth = (width - margin.left - margin.right) / data.length
   // creating linear scaling for Y
   const scaleY = d3.scaleLinear()
     .domain([min, max])
-    .range([paddingY, height - paddingY]) 
+    .range([margin.top, height - margin.bottom]) 
   // creating linear scaling for X
   // data.length is used because we want scaling by X
   // depends on item count, not values 
   const scaleX = d3.scaleLinear()
     .domain([0, data.length])
-    .range([paddingX, width - paddingX]) 
+    .range([margin.left, width - margin.right]) 
   // creating of colors scale
   const scaleColors = d3.scaleQuantize()
       .domain([0, data.length])
@@ -46,7 +46,7 @@ function makeBar() {
   const axisY = d3.axisRight(
     d3.scaleLinear()
       .domain([min, max])
-      .range([height - paddingY, paddingY])
+      .range([height - margin.top, margin.bottom])
     ) 
 
   // creating empty selection
@@ -64,21 +64,21 @@ function makeBar() {
       // it should be placed at the bottom of the plot
       .attr('y', d => height - scaleY(d)) 
       // setting element width 
-      // padding * 2 because applied padding
-      //  from both sides should be taken into account
       .attr('width', barWidth)
       // setting element height
-      .attr('height', d => scaleY(d) - paddingY) 
+      .attr('height', d => scaleY(d) - margin.top) 
       // filling element with color from color scale
       .attr('fill', (d, i) => scaleColors(i)) 
 
   // creating g element for Y axis and calling its component function
   svg.append('g').call(axisY)
+    // adding slight alignment
+    .attr('transform', `translate(${margin.left - 30}, 0)`)
+
   // creating g element for X axis and calling its component function
   svg.append('g').attr('class', 'x-axis').call(axisX)
       // transform in using to move the axis to bottom of the plot
-      // -1 is slightly correction to make entire axis visible
-      .attr('transform', `translate(0, ${height - paddingY})`) 
+      .attr('transform', `translate(0, ${height - margin.top})`) 
   // applying rotation to x axis labels to make plot more responsive
   d3.selectAll('.x-axis .tick text')
     // applying some transform to x axis label for better readability
@@ -100,7 +100,7 @@ function makeBar() {
           // setting transition duration
           .duration(300) 
           // updating every item height
-          .attr('height', d => scaleY(d) - paddingY) 
+          .attr('height', d => scaleY(d) - margin.top) 
           // updating every item y position
           .attr('y', d => height - scaleY(d))
   }

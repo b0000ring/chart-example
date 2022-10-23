@@ -15,8 +15,8 @@ function makeLinear() {
   const max = 10
   // min data item value
   const min = 0 
-  const paddingY = 50
-  const paddingX = 50
+  // setting values for margins of svg content
+  const margin = {top: 30, left: 50, right: 30, bottom: 60}
 
   // selecting root element for plot
   const svg = d3.select('#chart')
@@ -30,11 +30,11 @@ function makeLinear() {
   // depends on item count, not values 
   const scaleX = d3.scaleLinear()
     .domain([0, data.length - 1])
-    .range([paddingX, width - paddingX])
+    .range([margin.left, width - margin.right])
   // creating linear scaling for Y axis
   const scaleY = d3.scaleLinear()
     .domain([min, max])
-    .range([paddingY, height - paddingY])
+    .range([margin.bottom, height - margin.top])
 
   // creating of X axis 
   const axisX = d3.axisBottom(scaleX)
@@ -48,7 +48,7 @@ function makeLinear() {
   const axisY = d3.axisRight(
     d3.scaleLinear()
       .domain([min, max])
-      .range([height - paddingY, paddingY])
+      .range([height - margin.bottom, margin.top])
   )
  
   // creating an instance of line generator 
@@ -98,12 +98,14 @@ function makeLinear() {
   svg.append('g').attr('class', 'x-axis').call(axisX)
     // transform in using to move the axis to bottom of the plot
     // +5 is slightly correction to make entire axis visible
-    .attr('transform', `translate(0, ${height - paddingY + 5})`)
+    .attr('transform', `translate(0, ${height - margin.bottom + 5})`)
   // applying rotation to x axis labels to make plot more responsive
   d3.selectAll('.x-axis .tick text')
     .attr('transform', 'translate(-20, 20) rotate(-45)')
   // creating g element for Y axis and calling its component function
   svg.append('g').call(axisY)
+      // adding slight alignment
+      .attr('transform', `translate(${margin.left - 30}, 0)`)
 
   // calling dot component function and passing circles selection
   dot(circles)

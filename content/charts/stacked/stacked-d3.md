@@ -15,8 +15,8 @@ function makeStacked() {
   const max = 10
   // min data item value
   const min = 0
-  const padding = 30
-
+  // setting values for margins of svg content
+  const margin = {top: 30, left: 50, right: 30, bottom: 50}
   // selecting root element for plot
   const svg = d3.select('#chart')
   // getting root element width
@@ -25,13 +25,13 @@ function makeStacked() {
   const height = parseInt(svg.style('height')) 
 
   // creating linear scaling for X axis
-  // depends on item count, not values 
+  // depends on item count, not values
   const scaleX = d3.scaleLinear()
     // setting X scale domain
     // from 0 to 4 because inner data array length is 5
     .domain([0, 4])
     // setting scale range
-    .range([padding, width - padding])
+    .range([margin.left, width - margin.right])
   // creating linear scaling for Y axis
   const scaleY = d3.scaleLinear()
     // setting Y scale domain
@@ -39,7 +39,7 @@ function makeStacked() {
     // max and min should be swapped because value should be represented
     // from down to top
     .domain([max, min])
-    .range([padding, height - padding])
+    .range([margin.top, height - margin.bottom])
 
   // creating of colors scale
   const scaleColors = d3.scaleQuantize()
@@ -50,7 +50,7 @@ function makeStacked() {
         '#F46D43', '#D53E4F', '#9E0142'
       ]) 
 
-  // creating of X axis 
+  // creating of X axis
   const axisX = d3.axisBottom(scaleX)
     // setting ticks for x axis
     // according to data array length
@@ -68,7 +68,7 @@ function makeStacked() {
   const axisY = d3.axisLeft(
     d3.scaleLinear()
       .domain([min, max])
-      .range([height - padding, padding])
+      .range([height - margin.bottom, margin.top])
     ) 
   
   // creating area generator function
@@ -79,7 +79,7 @@ function makeStacked() {
     // x coord according to data item index
     .x((d, i) => scaleX(i))
     // y0 is static and should be the bottom of the plot
-    .y0(height - padding)
+    .y0(height - margin.bottom)
     // y1 is the data item value
     .y1(d => scaleY(d))
 
@@ -103,7 +103,7 @@ function makeStacked() {
     .call(axisY)
     // setting Y axis position to be on the plot left
     // -5 is slight corretion for better visibility
-    .attr('transform', `translate(${padding - 5}, 0)`)
+    .attr('transform', `translate(${margin.left - 5}, 0)`)
 
   // creating wrapper element for X axis
   svg.append('g')
@@ -111,7 +111,7 @@ function makeStacked() {
     .call(axisX)
     // setting X axis position to be on the plot bottom
     // +5 is slight corretion for better visibility
-    .attr('transform', `translate(0, ${height - padding + 5})`)
+    .attr('transform', `translate(0, ${height - margin.bottom + 5})`)
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and

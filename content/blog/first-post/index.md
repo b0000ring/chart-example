@@ -18,4 +18,4 @@ For my first post here I have decided to put my little game created for pico-8 f
 
 I also have a personal page on [itch.io](https://booooring.itch.io) (with not so much to see on it)
 
-{{< include-html "static/pico-game/index.html" >}}
+{{< include-html "static/blog/first-post/index.html" >}}
