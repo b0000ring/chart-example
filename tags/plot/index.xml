@@ -14,8 +14,8 @@
       <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/blog/chart-lifecycle/</guid>
-      <description>Integration of D3 data visualizations into front-end applications can be a tricky task. When a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and app. In this article, I describe some ways to update plots with saving their internal state.
-Internal plot state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added.</description>
+      <description>Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
+Plot internal state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added.</description>
     </item>
     
   </channel>
