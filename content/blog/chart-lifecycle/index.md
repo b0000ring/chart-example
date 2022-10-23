@@ -17,11 +17,11 @@ aliases:
 
 ![Tux, the Linux mascot](/covers/state-lifecycle.png)
 
-Integration of D3 data visualizations into front-end applications can be a tricky task. When a plot lifecycle is controlled by the application, 
-sometimes it may be unclear how to properly connect the plot and app.
+Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, 
+sometimes it may be unclear how to properly connect the plot and the application.
 In this article, I describe some ways to update plots with saving their internal state.
 
-## Internal plot state
+## Plot internal state
 When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added. And with interactivity usually comes state and with that, the complexity of the plot lifecycle can increase rapidly. Many different things can be stored in the plot state, like scrolling position, selected elements, zoom value, etc.
 Basically, that can be any effect of possible user input not directly related to data changes.
 
