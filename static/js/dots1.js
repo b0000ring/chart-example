@@ -36,6 +36,7 @@ function dots1() {
     .attr('r', d => d.size)
     .attr('cx', (d) => scaleX(d.x))
     .attr('cy', (d) => scaleY(d.y))
+    .style('fill', 'grey')
 
   function update() {
     const selection = svg.selectAll('circle')

@@ -84,8 +84,8 @@ For the simple plot, which represents some data without big data processing or t
       .x(d => d.x)
       .y(d => d.y)
 
-    const height = parseInt(plot.style('height'))
-    const width = parseInt(plot.style('width'))
+    const height = plot.node().getBoundingClientRect().height
+    const width = plot.node().getBoundingClientRect().width
 
     const zoom = d3.zoom()
       .extent([[0, 0], [width, height]])
@@ -105,7 +105,7 @@ For the simple plot, which represents some data without big data processing or t
       .attr('id', 'plot-content')
 
     plot
-      .call(zoom.transform, d3.zoomIdentity.translate(350,50).scale(0.5))
+      .call(zoom.transform, d3.zoomIdentity.translate(width / 2, 50).scale(0.5))
       .call(zoom)
     
     const content = plot.select('#plot-content')
@@ -208,8 +208,8 @@ The concrete condition may be different, it depends on the implementation of the
     // everything related to state initilization is hidden 
     // under first render condition
     if(!plot.selectChildren().size()) {
-      const height = parseInt(plot.style('height'))
-      const width = parseInt(plot.style('width'))
+      const height = plot.node().getBoundingClientRect().height
+      const width = plot.node().getBoundingClientRect().width
 
       const zoom = d3.zoom()
         .extent([[0, 0], [width, height]])
@@ -229,7 +229,7 @@ The concrete condition may be different, it depends on the implementation of the
         .attr('id', 'plot-content')
 
       plot
-        .call(zoom.transform, d3.zoomIdentity.translate(350,50).scale(0.5))
+        .call(zoom.transform, d3.zoomIdentity.translate(width / 2, 50).scale(0.5))
         .call(zoom)
     }
 
@@ -351,8 +351,8 @@ The main thing to consider is that the update function should be stored and acce
     let nodes = null
     let lnkMkr = null
 
-    const height = parseInt(plot.style('height'))
-    const width = parseInt(plot.style('width'))
+    const height = plot.node().getBoundingClientRect().height
+    const width = plot.node().getBoundingClientRect().width
 
     const zoom = d3.zoom()
       .extent([[0, 0], [width, height]])
@@ -372,7 +372,7 @@ The main thing to consider is that the update function should be stored and acce
       .attr('id', 'plot-content')
 
     plot
-      .call(zoom.transform, d3.zoomIdentity.translate(250,50).scale(0.5))
+      .call(zoom.transform, d3.zoomIdentity.translate(width / 2, 50).scale(0.5))
       .call(zoom)
     
     const content = plot.select('#plot-content')
