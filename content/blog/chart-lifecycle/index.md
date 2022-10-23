@@ -377,8 +377,8 @@ The main thing to consider is that the update function should be stored and acce
     
     const content = plot.select('#plot-content')
 
-    // initial call of setup/render function
-    setup()
+    // initial call of render function
+    render()
 
     function renderItem(selection) {
       selection.append('use')
@@ -415,7 +415,7 @@ The main thing to consider is that the update function should be stored and acce
     }
 
     // function that updates everything that depends on the data
-    function setup() {
+    function render() {
       nodes = d3.hierarchy(data3, d => d.children)
       lnkMkr = d3.linkHorizontal()
         .x(d => d.x)
@@ -445,7 +445,7 @@ The main thing to consider is that the update function should be stored and acce
     }
 
     // returning function that redraws the plot after updating the data
-    return setup
+    return render
   }
 
   // function changes dataset
