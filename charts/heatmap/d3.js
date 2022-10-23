@@ -11,7 +11,7 @@ function makeHeatmap() {
   const rows = (data.length / rowLength) | 0
 
   // setting values for margins of svg content
-  const margin = {top: 50, left: 50, right: 100, bottom: 50}
+  const margin = {top: 40, left: 40, right: 30, bottom: 30}
 
   // selecting svg container
   const svg = d3.select('#chart')

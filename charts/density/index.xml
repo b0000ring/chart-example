@@ -13,7 +13,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/density/density-d3/</guid>
-      <description>function makeDensity() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] // max data item value const max = 10 // min data item value const min = 0 const padding = 30 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // creating linear scaling for Y const scaleY = d3.</description>
+      <description>function makeDensity() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 20, left: 50, right: 30, bottom: 40} // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.</description>
     </item>
     
   </channel>

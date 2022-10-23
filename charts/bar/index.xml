@@ -13,7 +13,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/bar/bar-d3/</guid>
-      <description>function makeBar() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] // max data item value const max = 10 // min data item value const min = 0 const paddingY = 50 const paddingX = 50 // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.</description>
+      <description>function makeBar() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 50, left: 50, right: 30, bottom: 30} // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.</description>
     </item>
     
   </channel>
