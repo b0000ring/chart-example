@@ -492,8 +492,8 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#plot-content&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initial call of setup/render function
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">setup</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initial call of render function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">render</span>()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderItem</span>(<span style="color:#a6e22e">selection</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">selection</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;use&#39;</span>)
@@ -530,7 +530,7 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function that updates everything that depends on the data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">render</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">hierarchy</span>(<span style="color:#a6e22e">data3</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">children</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lnkMkr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">linkHorizontal</span>()
 </span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">x</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>)
@@ -560,7 +560,7 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// returning function that redraws the plot after updating the data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">setup</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">render</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// function changes dataset
