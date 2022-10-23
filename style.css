@@ -119,6 +119,9 @@ svg:not(:root) {
   justify-content: center;
   text-align: center;
 }
+#dots {
+  background-color: inherit;
+}
 @media (prefers-color-scheme: dark) {
   svg {
     background-color: #1b1c1d;

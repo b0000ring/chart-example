@@ -34,8 +34,8 @@ function drawExample2() {
   // everything related to state initilization is hidden 
   // under first render condition
   if(!plot.selectChildren().size()) {
-    const height = parseInt(plot.style('height'))
-    const width = parseInt(plot.style('width'))
+    const height = plot.node().getBoundingClientRect().height
+    const width = plot.node().getBoundingClientRect().width
 
     const zoom = d3.zoom()
       .extent([[0, 0], [width, height]])
@@ -55,7 +55,7 @@ function drawExample2() {
       .attr('id', 'plot-content')
 
     plot
-      .call(zoom.transform, d3.zoomIdentity.translate(350,50).scale(0.5))
+      .call(zoom.transform, d3.zoomIdentity.translate(width / 2, 50).scale(0.5))
       .call(zoom)
   }
 
