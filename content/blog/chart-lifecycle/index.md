@@ -2,8 +2,8 @@
 author:
   name: "Alex Chirkin"
 date: 2022-10-23
-linktitle: D3 Chart lifecycle and state
-title: D3 Chart lifecycle and state
+linktitle: State in D3 chart lifecycle
+title: State in D3 chart lifecycle
 type:
 - post
 - posts
