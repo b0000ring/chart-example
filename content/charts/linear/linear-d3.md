@@ -11,6 +11,9 @@ function makeLinear() {
   //empty data set
   let data = [0, 0, 0, 0, 0, 0, 0, 0]
 
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
+
   // max data item value
   const max = 10
   // min data item value
@@ -62,7 +65,8 @@ function makeLinear() {
     // setting radius for dot element
     selection.attr('r', 5)
       // fill dot with color
-      .attr('fill', '#9E0142')
+      .attr('fill', fillColor)
+      .attr('stroke', strokeColor)
       // setting x coord
       .attr('cx', (d, i) => scaleX(i))
       // setting y coord
@@ -76,7 +80,7 @@ function makeLinear() {
       // setting empty line filling
       .attr('fill', 'none')
       //  setting line color
-      .attr('stroke', '#3288BD')
+      .attr('stroke', strokeColor)
   }
 
   // applying line to the chart

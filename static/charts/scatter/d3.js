@@ -4,6 +4,9 @@ function makeScatter() {
   // min data item value
   const min = 0
 
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
+
   // generating dataset
   const data = new Array(100).fill().map(() => ({
       x: (Math.random() * max) | 0,
@@ -11,7 +14,7 @@ function makeScatter() {
   }))
 
   // setting values for margins of svg content
-  const margin = {top: 10, left: 50, right: 10, bottom: 50}
+  const margin = {top: 30, left: 50, right: 30, bottom: 50}
 
   // selecting svg container
   const svg = d3.select('#chart')
@@ -64,9 +67,9 @@ function makeScatter() {
       // setting circle radius
       .attr('r', '5')
       // setting circle fill color
-      .attr('fill', '#F46D43')
+      .attr('fill', fillColor)
       // setting circle stroke color
-      .attr('stroke', '#FFFFBF')
+      .attr('stroke', strokeColor)
       // setting item x coord
       .attr('cx', d => scaleX(d.x))
       // setting item y coord
@@ -83,7 +86,7 @@ function makeScatter() {
   // creating container element for X axis
   svg.append('g').call(axisY)
       // setting y axis position (30 is correction to make it visible)
-      .attr('transform', `translate(30, 0)`)
+      .attr('transform', `translate(${margin.left - 10}, 0)`)
       // setting y axis container id
       .attr('id', 'axisy')
 

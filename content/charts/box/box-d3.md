@@ -15,7 +15,9 @@ function makeBox() {
   const max = 15
   // min data item value
   const min = 5
-  const padding = 10
+  const padding = 24
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
 
   // selecting root element for plot
   const svg = d3.select('#chart')
@@ -43,9 +45,11 @@ function makeBox() {
     .attr('x2', width / 2)
     .attr('y2', height-padding)
     // applying line color
-    .style('stroke', '#a9a9b3')
+    .style('stroke', strokeColor)
     // applying line style (dashing)
     .style('stroke-dasharray', '4')
+    // applying line width
+    .style('stroke-width', '2')
 
   // creating top horizontal helping line
   items.append('line')
@@ -55,14 +59,16 @@ function makeBox() {
     .attr('y1', padding)
     .attr('x2', width / 1.5)
     .attr('y2', padding)
-    .attr('stroke', '#a9a9b3')
+    .attr('stroke', strokeColor)
+    .style('stroke-width', '2')
   // creating bottom horizontal helping line
   items.append('line')
     .attr('x1', width / 3)
     .attr('y1', height - padding)
     .attr('x2', width / 1.5)
     .attr('y2', height - padding)
-    .attr('stroke', '#a9a9b3')
+    .attr('stroke', strokeColor)
+    .style('stroke-width', '2')
 
   // creating rect element for box
   // we dont really need to connect data
@@ -80,9 +86,11 @@ function makeBox() {
     // setting width
     .attr('width', width / 2)
     // setting rect fill color
-    .style('fill', '#a9a9b3')
+    .style('fill', fillColor)
     // setting stroke color
-    .style('stroke', 'black')
+    .style('stroke', strokeColor)
+    // setting stroke width
+    .style('stroke-width', '2')
 
   // creating line for mean value
   items.append('line')
@@ -100,13 +108,15 @@ function makeBox() {
     // (-10 to hide the line for initial render)
     .attr('y2', -10)
     // setting stroke color
-    .style('stroke', 'black')
+    .style('stroke', strokeColor)
     // setting stroke width
-    .style('stroke-width', '4')
+    .style('stroke-width', '2')
 
   // creating g element for Y axis and calling its component function
   svg.append('g')
     .call(axis)
+    // applying transform to place the axis according to padding
+    .attr('transform', `translate(${padding}, 0)`)
 
   // function for showing dynamic data and view change
   // it generates new data, applies to plot and
@@ -122,7 +132,6 @@ function makeBox() {
     const mean = d3.mean(data)
     
     // changing elements attributes based on new data
-    // applying new box attributes
     rect
         // creating transition
         .transition() 
@@ -135,7 +144,6 @@ function makeBox() {
         // to get correct box size
         .attr('height', scaleY(d3.max(data)) - scaleY(d3.min(data)))
 
-    // applying new mean line attributes
     line.transition() 
       // setting transition duration
       .duration(300)

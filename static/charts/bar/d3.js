@@ -1,6 +1,9 @@
 function makeBar() {     
   //empty data set
   let data = [0, 0, 0, 0, 0, 0, 0, 0]
+
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
   
   // max data item value
   const max = 10
@@ -26,14 +29,7 @@ function makeBar() {
   const scaleX = d3.scaleLinear()
     .domain([0, data.length])
     .range([margin.left, width - margin.right]) 
-  // creating of colors scale
-  const scaleColors = d3.scaleQuantize()
-      .domain([0, data.length])
-      .range([
-        '#5E4FA2', '#3288BD', '#66C2A5', '#ABDDA4', 
-        '#E6F598', '#FFFFBF', '#FEE08B', '#FDAE61',
-        '#F46D43', '#D53E4F', '#9E0142'
-      ]) 
+
   // creating of X axis 
   const axisX = d3.axisBottom(scaleX)
     // tick format needed for custom value for every tick
@@ -68,7 +64,8 @@ function makeBar() {
       // setting element height
       .attr('height', d => scaleY(d) - margin.top) 
       // filling element with color from color scale
-      .attr('fill', (d, i) => scaleColors(i)) 
+      .attr('fill', fillColor) 
+      .attr('stroke', strokeColor)
 
   // creating g element for Y axis and calling its component function
   svg.append('g').call(axisY)

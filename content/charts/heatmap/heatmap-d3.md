@@ -13,9 +13,7 @@ function makeHeatmap() {
   // min data item value
   const min = 1
   // generating dataset
-  const data = new Array(64)
-    .fill()
-    .map(() => (Math.random() * max + min) | 0)
+  const data = new Array(64).fill().map(() => (Math.random() * max + min) | 0)
   // how much items could be in row
   const rowLength = 8
   // how much rows will be in plot
@@ -61,7 +59,7 @@ function makeHeatmap() {
     .range([margin.top, height - margin.bottom])
   // creating color scale
   const scaleColor = d3.scaleQuantize().domain([min, max]).range([
-    '#5E4FA2', '#3288BD',  '#D53E4F', '#9E0142'
+    '#e0ccfb', '#c09af8',  '#8133f1', '#6200ee'
   ])
   
   // creating X axis
@@ -96,7 +94,8 @@ function makeHeatmap() {
       // (this - here element which triggered the event)
       d3.select(this)
         // setting special color for the element
-        .attr('fill', '#FDAE61')
+        .attr('fill', '#ffc008')
+        .attr('stroke', '#ffc008')
     })
     // setting mouseleave callback for every item
     .on('mouseleave', function () {
@@ -104,6 +103,7 @@ function makeHeatmap() {
       d3.select(this)
         // setting color based on item value
         .attr('fill', (d, i) => scaleColor(d))
+        .attr('stroke', (d, i) => scaleColor(d))
     })
     // setting click event (e - event, v - item value)
     .on('click', (e, v) => {
@@ -185,7 +185,7 @@ function makeHeatmap() {
           // setting item color
           .attr('fill', (d, i) => scaleColor(d))
           // setting item border color
-          .attr('stroke', 'black')
+          .attr('stroke', (d, i) => scaleColor(d))
   }
 }
 ```

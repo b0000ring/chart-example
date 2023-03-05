@@ -43,7 +43,9 @@ function makeNetwork() {
   const width = parseInt(svg.style('width')) 
   // getting root element height
   const height = parseInt(svg.style('height')) 
-  const padding = 90
+  const padding = 70
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
 
   // generating network datastructure from the data
   // by using custom function
@@ -63,14 +65,6 @@ function makeNetwork() {
   const scaleX = d3.scaleLinear()
     .domain([d3.min(items, d => d.x), d3.max(items, d => d.x)])
     .range([padding, width - padding]) 
-  // creating of colors scale
-  const scaleColors = d3.scaleQuantize()
-    .domain([0, items.length])
-    .range([
-      '#5E4FA2', '#3288BD', '#66C2A5', '#ABDDA4', 
-      '#E6F598', '#FFFFBF', '#FEE08B', '#FDAE61',
-      '#F46D43', '#D53E4F', '#9E0142'
-    ]) 
 
   // creating drag behaviour
   const dragHandler = d3.drag()
@@ -102,7 +96,7 @@ function makeNetwork() {
     .attr('x2', d => scaleX(d[1].x))
     .attr('y2', d => scaleY(d[1].y))
     // applying lines color
-    .attr('stroke', 'black')
+    .attr('stroke', strokeColor)
 
   // render nodes
   // creating empty collection
@@ -125,7 +119,8 @@ function makeNetwork() {
     // applying circle radius
     .attr('r', '10')
     // applying each circle color
-    .attr('fill', (d, i) => scaleColors(i))
+    .attr('fill', fillColor)
+    .attr('stroke', strokeColor)
     // setting cursor style
     .style('cursor', 'pointer')
 
@@ -133,6 +128,8 @@ function makeNetwork() {
   nodes.append('text')
     // setting text value
     .text(d => d.data.id)
+    // applying text color
+    .attr('fill', 'currentColor')
     // setting popup text element coords
     // +15 is a slight correction for better visibility
     .attr('x', d => scaleX(d.x) + 15)
