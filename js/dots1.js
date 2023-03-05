@@ -1,4 +1,5 @@
 function dots1() {
+  let mouseCoords = {}
   let timeout = null
   let svgElement = document.getElementById('dots')
   let width = svgElement.getBoundingClientRect().width
@@ -21,6 +22,7 @@ function dots1() {
       }
     })
 
+  const lightningRadius = 200
   const svg = d3.select('#dots')
     .style('opacity', '0')
   const container = document.querySelector('.container')
@@ -61,7 +63,35 @@ function dots1() {
       .attr('opacity', (d) => d.opacity)
       .attr('cx', (d) => scaleX(d.x))
       .attr('cy', (d) => scaleY(d.y))
+      .transition()
+      .duration(100)
+      .attr('opacity', function(d) {
+        const {x, y} = this.getBoundingClientRect()
+        if(Math.abs(x - mouseCoords.x) < lightningRadius && Math.abs(y - mouseCoords.y) < lightningRadius) {
+          return d.opacity * 2
+        }
+
+        return d.opacity
+      })
   }
+
+  let handleMousemove = (event) => {
+    mouseCoords = {
+      x: event.x,
+      y: event.y
+    }
+  };
+  
+  let throttle = (func, delay) => {
+    let prev = Date.now() - delay;
+    return (...args) => {
+      let current = Date.now();
+      if (current - prev >= delay) {
+        prev = current;
+        func.apply(null, args);
+      }
+    }
+  };
 
   function changeSize() {
     width = svgElement.getBoundingClientRect().width
@@ -70,6 +100,7 @@ function dots1() {
     scaleY = d3.scaleLinear().domain([0, 100]).range([0, height])
   }
 
+  document.addEventListener('mousemove', throttle(handleMousemove, 100));
   resize_ob.observe(container)
   setInterval(update, 30)
 }
