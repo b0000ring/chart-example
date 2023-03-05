@@ -1,7 +1,7 @@
 baseurl      = "https://chartexample.com"
 title        = "chartexample"
 languageCode = "en-us"
-theme        = "hello-friend-ng"
+theme        = "chart-example-theme"
 paginate     = 10
 
 [params]
