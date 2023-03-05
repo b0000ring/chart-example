@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Linear chart D3 example">
 <meta itemprop="description" content="Linear chart D3.js example">
 
-<meta itemprop="wordCount" content="525"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="535"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -124,6 +124,9 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//empty data set
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strokeColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#bb86fc&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fillColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#755a96&#39;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// max data item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// min data item value
@@ -175,7 +178,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting radius for dot element
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">selection</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#ae81ff">5</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// fill dot with color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;#9E0142&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#a6e22e">fillColor</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting x coord
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;cx&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">i</span>))
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting y coord
@@ -189,7 +193,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting empty line filling
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;none&#39;</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">//  setting line color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;#3288BD&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// applying line to the chart

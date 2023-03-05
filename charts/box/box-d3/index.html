@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Box chart D3 example">
 <meta itemprop="description" content="Box chart D3 example">
 
-<meta itemprop="wordCount" content="555"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="581"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -128,7 +128,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// min data item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strokeColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#bb86fc&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fillColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#755a96&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// selecting root element for plot
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#chart&#39;</span>)
@@ -156,9 +158,11 @@
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x2&#39;</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#a6e22e">height</span><span style="color:#f92672">-</span><span style="color:#a6e22e">padding</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying line color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;#a9a9b3&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying line style (dashing)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-dasharray&#39;</span>, <span style="color:#e6db74">&#39;4&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying line width
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-width&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating top horizontal helping line
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;line&#39;</span>)
@@ -168,14 +172,16 @@
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y1&#39;</span>, <span style="color:#a6e22e">padding</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x2&#39;</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1.5</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#a6e22e">padding</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;#a9a9b3&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-width&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating bottom horizontal helping line
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;line&#39;</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x1&#39;</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y1&#39;</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x2&#39;</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1.5</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;#a9a9b3&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-width&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating rect element for box
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// we dont really need to connect data
@@ -193,9 +199,11 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting width
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;width&#39;</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting rect fill color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;#a9a9b3&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#a6e22e">fillColor</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting stroke color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting stroke width
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-width&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating line for mean value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;line&#39;</span>)
@@ -213,13 +221,15 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// (-10 to hide the line for initial render)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting stroke color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting stroke width
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-width&#39;</span>, <span style="color:#e6db74">&#39;4&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;stroke-width&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating g element for Y axis and calling its component function
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axis</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying transform to place the axis according to padding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">padding</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, 0)`</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function for showing dynamic data and view change
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// it generates new data, applies to plot and
@@ -235,7 +245,6 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mean</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">mean</span>(<span style="color:#a6e22e">data</span>)
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// changing elements attributes based on new data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// applying new box attributes
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">rect</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// creating transition
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">transition</span>() 
@@ -248,8 +257,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// to get correct box size
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;height&#39;</span>, <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">data</span>)) <span style="color:#f92672">-</span> <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">data</span>)))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying new mean line attributes
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">line</span>.<span style="color:#a6e22e">transition</span>() 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">line</span>.<span style="color:#a6e22e">transition</span>() 
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting transition duration
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">duration</span>(<span style="color:#ae81ff">300</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting new y1 coord

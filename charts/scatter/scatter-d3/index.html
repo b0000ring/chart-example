@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Scatter chart D3 example">
 <meta itemprop="description" content="Scatter chart D3.js example">
 
-<meta itemprop="wordCount" content="450"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="460"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -126,6 +126,9 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// min data item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strokeColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#bb86fc&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fillColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#755a96&#39;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// generating dataset
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">fill</span>().<span style="color:#a6e22e">map</span>(() =&gt; ({
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> (Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span>) <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>,
@@ -133,7 +136,7 @@
 </span></span><span style="display:flex;"><span>  }))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// setting values for margins of svg content
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">margin</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">top</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">left</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50</span>, <span style="color:#a6e22e">right</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">bottom</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50</span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">margin</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">top</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">30</span>, <span style="color:#a6e22e">left</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50</span>, <span style="color:#a6e22e">right</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">30</span>, <span style="color:#a6e22e">bottom</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50</span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// selecting svg container
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#chart&#39;</span>)
@@ -186,9 +189,9 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting circle radius
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#e6db74">&#39;5&#39;</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting circle fill color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;#F46D43&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#a6e22e">fillColor</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting circle stroke color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;#FFFFBF&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting item x coord
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;cx&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>))
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting item y coord
@@ -205,7 +208,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating container element for X axis
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>).<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisY</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting y axis position (30 is correction to make it visible)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(30, 0)`</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;transform&#39;</span>, <span style="color:#e6db74">`translate(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">left</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, 0)`</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting y axis container id
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;axisy&#39;</span>)
 </span></span><span style="display:flex;"><span>

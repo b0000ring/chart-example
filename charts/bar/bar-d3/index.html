@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Bar chart D3 example">
 <meta itemprop="description" content="Bar chart D3.js example">
 
-<meta itemprop="wordCount" content="530"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="513"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -123,6 +123,9 @@
                 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeBar</span>() {     
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//empty data set
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strokeColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#bb86fc&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fillColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#755a96&#39;</span>
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// max data item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
@@ -148,14 +151,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span>])
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">right</span>]) 
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of colors scale
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleColors</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleQuantize</span>()
-</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span>])
-</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">range</span>([
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;#5E4FA2&#39;</span>, <span style="color:#e6db74">&#39;#3288BD&#39;</span>, <span style="color:#e6db74">&#39;#66C2A5&#39;</span>, <span style="color:#e6db74">&#39;#ABDDA4&#39;</span>, 
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;#E6F598&#39;</span>, <span style="color:#e6db74">&#39;#FFFFBF&#39;</span>, <span style="color:#e6db74">&#39;#FEE08B&#39;</span>, <span style="color:#e6db74">&#39;#FDAE61&#39;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;#F46D43&#39;</span>, <span style="color:#e6db74">&#39;#D53E4F&#39;</span>, <span style="color:#e6db74">&#39;#9E0142&#39;</span>
-</span></span><span style="display:flex;"><span>      ]) 
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of X axis 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">axisBottom</span>(<span style="color:#a6e22e">scaleX</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// tick format needed for custom value for every tick
@@ -190,7 +186,8 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// setting element height
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;height&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">top</span>) 
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// filling element with color from color scale
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColors</span>(<span style="color:#a6e22e">i</span>)) 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#a6e22e">fillColor</span>) 
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating g element for Y axis and calling its component function
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;g&#39;</span>).<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">axisY</span>)

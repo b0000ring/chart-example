@@ -2,26 +2,27 @@ function makeTree() {
   //data set
   const data = {
     name: 'root',
-    color: '#ABDDA4',
     children: [
-      {name: 'child 1', color: '#5E4FA2'},
+      {name: 'child 1'},
       {
         name: 'child 2',
-        color: '#FDAE61',
         children: [
-          {name: 'child 4', color: '#3288BD'},
-          {name: 'child 5', color: '#66C2A5'}
+          {name: 'child 4'},
+          {name: 'child 5'}
         ]
       },
       {
         name: 'child 3',
-        color: '#E6F598',
         children: [
-          {name: 'child 6', color: '#FEE08B'}
+          {name: 'child 6'}
         ]
       }
     ]
   }
+
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
+  const selectionColor = '#6200ee'
 
   // selecting root element for plot
   const svg = d3.select('#chart')
@@ -83,7 +84,7 @@ function makeTree() {
     .attr('rx', '20')
     .attr('ry', '20')
     // setting stroke color
-    .style('stroke', 'black')
+    .style('stroke', strokeColor)
     // setting stroke width
     .style('stroke-width', 2)
 
@@ -145,7 +146,7 @@ function makeTree() {
             // checking that both linked nodes are in selected path
             d => path.includes(d.target) && path.includes(d.source) 
               // setting specific color
-              ? '#D53E4F' : '#a9a9b3'
+              ? selectionColor : strokeColor
           )
 
         // changing fill color for nodes which in selected path
@@ -158,7 +159,7 @@ function makeTree() {
             'fill',
             // checking is element included in selected path
             // and selecting specific color
-            d => path.includes(d) ? '#D53E4F' : d.data.color
+            d => path.includes(d) ? selectionColor : fillColor
           )
           
       })
@@ -166,9 +167,9 @@ function makeTree() {
       // to reset all styles for links and nodes in plot
       .on('mouseleave', function() {
         g.selectAll('use')
-          .style('fill', d => d.data.color)
+          .style('fill', fillColor)
         
-        links.style('stroke', '#a9a9b3')
+        links.style('stroke', strokeColor)
       })
 
     // appending node element by using 
@@ -183,7 +184,7 @@ function makeTree() {
       // setting y coord for rect element with some correction
       .attr('y', d => d.x - 25 )
       // setting rect background color
-      .style('fill', d => d.data.color)
+      .style('fill', fillColor)
       
     // appending text element
     g.append('text')
@@ -194,6 +195,7 @@ function makeTree() {
       .attr('y', d => d.x + 5)
       // setting text
       .text(d => d.data.name)
+      .attr('fill', 'currentColor')
   }
   // zoom event callback
   function onzoom({ transform }) {

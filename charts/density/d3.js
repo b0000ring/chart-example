@@ -2,6 +2,9 @@ function makeDensity() {
   //empty data set
   let data = [0, 0, 0, 0, 0, 0, 0, 0]
 
+  const strokeColor = '#bb86fc'
+  const fillColor = '#755a96'
+
   // max data item value
   const max = 10
   // min data item value
@@ -66,7 +69,9 @@ function makeDensity() {
     // setting d attr of every path element by calling area generator
     .attr('d', d => area(d))
     // setting fill color
-    .attr('fill', '#5E4FA2')
+    .attr('fill', fillColor)
+    // setting stroke color
+    .attr('stroke', strokeColor)
 
   // creating wrapper element for Y axis
   svg.append('g')

@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Heatmap chart D3 example">
 <meta itemprop="description" content="Heatmap chart D3.js example">
 
-<meta itemprop="wordCount" content="749"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="757"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -126,9 +126,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// min data item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// generating dataset
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">64</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">fill</span>()
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(() =&gt; (Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">min</span>) <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">64</span>).<span style="color:#a6e22e">fill</span>().<span style="color:#a6e22e">map</span>(() =&gt; (Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">min</span>) <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// how much items could be in row
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rowLength</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// how much rows will be in plot
@@ -174,7 +172,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">top</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">bottom</span>])
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating color scale
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleQuantize</span>().<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>]).<span style="color:#a6e22e">range</span>([
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;#5E4FA2&#39;</span>, <span style="color:#e6db74">&#39;#3288BD&#39;</span>,  <span style="color:#e6db74">&#39;#D53E4F&#39;</span>, <span style="color:#e6db74">&#39;#9E0142&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;#e0ccfb&#39;</span>, <span style="color:#e6db74">&#39;#c09af8&#39;</span>,  <span style="color:#e6db74">&#39;#8133f1&#39;</span>, <span style="color:#e6db74">&#39;#6200ee&#39;</span>
 </span></span><span style="display:flex;"><span>  ])
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating X axis
@@ -209,7 +207,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// (this - here element which triggered the event)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>)
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// setting special color for the element
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;#FDAE61&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;#ffc008&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;#ffc008&#39;</span>)
 </span></span><span style="display:flex;"><span>    })
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting mouseleave callback for every item
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;mouseleave&#39;</span>, <span style="color:#66d9ef">function</span> () {
@@ -217,6 +216,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>)
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// setting color based on item value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColor</span>(<span style="color:#a6e22e">d</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColor</span>(<span style="color:#a6e22e">d</span>))
 </span></span><span style="display:flex;"><span>    })
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting click event (e - event, v - item value)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;click&#39;</span>, (<span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">v</span>) =&gt; {
@@ -298,7 +298,7 @@
 </span></span><span style="display:flex;"><span>          <span style="color:#75715e">// setting item color
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColor</span>(<span style="color:#a6e22e">d</span>))
 </span></span><span style="display:flex;"><span>          <span style="color:#75715e">// setting item border color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColor</span>(<span style="color:#a6e22e">d</span>))
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>

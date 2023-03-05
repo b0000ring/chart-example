@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Network chart D3 example">
 <meta itemprop="description" content="Network chart D3.js example">
 
-<meta itemprop="wordCount" content="728"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="717"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -156,7 +156,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;width&#39;</span>)) 
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// getting root element height
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;height&#39;</span>)) 
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">70</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strokeColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#bb86fc&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fillColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#755a96&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// generating network datastructure from the data
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// by using custom function
@@ -176,14 +178,6 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">items</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>), <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">items</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>)])
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>]) 
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of colors scale
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleColors</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleQuantize</span>()
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">length</span>])
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;#5E4FA2&#39;</span>, <span style="color:#e6db74">&#39;#3288BD&#39;</span>, <span style="color:#e6db74">&#39;#66C2A5&#39;</span>, <span style="color:#e6db74">&#39;#ABDDA4&#39;</span>, 
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;#E6F598&#39;</span>, <span style="color:#e6db74">&#39;#FFFFBF&#39;</span>, <span style="color:#e6db74">&#39;#FEE08B&#39;</span>, <span style="color:#e6db74">&#39;#FDAE61&#39;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;#F46D43&#39;</span>, <span style="color:#e6db74">&#39;#D53E4F&#39;</span>, <span style="color:#e6db74">&#39;#9E0142&#39;</span>
-</span></span><span style="display:flex;"><span>    ]) 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating drag behaviour
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dragHandler</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">drag</span>()
@@ -215,7 +209,7 @@
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x2&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>[<span style="color:#ae81ff">1</span>].<span style="color:#a6e22e">x</span>))
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleY</span>(<span style="color:#a6e22e">d</span>[<span style="color:#ae81ff">1</span>].<span style="color:#a6e22e">y</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying lines color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// render nodes
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// creating empty collection
@@ -238,7 +232,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying circle radius
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#e6db74">&#39;10&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying each circle color
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, (<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">scaleColors</span>(<span style="color:#a6e22e">i</span>))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#a6e22e">fillColor</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;stroke&#39;</span>, <span style="color:#a6e22e">strokeColor</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting cursor style
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">style</span>(<span style="color:#e6db74">&#39;cursor&#39;</span>, <span style="color:#e6db74">&#39;pointer&#39;</span>)
 </span></span><span style="display:flex;"><span>
@@ -246,6 +241,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;text&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting text value
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">text</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">id</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// applying text color
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;fill&#39;</span>, <span style="color:#e6db74">&#39;currentColor&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// setting popup text element coords
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// +15 is a slight correction for better visibility
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">scaleX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">15</span>)

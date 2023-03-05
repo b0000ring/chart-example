@@ -7,7 +7,7 @@ function makeStacked() {
   // min data item value
   const min = 0
   // setting values for margins of svg content
-  const margin = {top: 30, left: 50, right: 30, bottom: 50}
+  const margin = {top: 30, left: 50, right: 30, bottom: 30}
   // selecting root element for plot
   const svg = d3.select('#chart')
   // getting root element width
@@ -36,9 +36,7 @@ function makeStacked() {
   const scaleColors = d3.scaleQuantize()
       .domain([0, data.length])
       .range([
-        '#5E4FA2', '#3288BD', '#66C2A5', '#ABDDA4', 
-        '#E6F598', '#FFFFBF', '#FEE08B', '#FDAE61',
-        '#F46D43', '#D53E4F', '#9E0142'
+        '#d7cde5', '#bc9fe6',  '#6200ee'
       ]) 
 
   // creating of X axis
@@ -87,6 +85,10 @@ function makeStacked() {
     .attr('d', d => area(d))
     // setting fill color
     .attr('fill', (d, i) => scaleColors(i))
+    // setting stroke color
+    .attr('stroke', '#d7cde5')
+    // setting stroke width
+    .attr('stroke-width', 2)
 
   // creating wrapper element for Y axis
   svg.append('g')
