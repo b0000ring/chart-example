@@ -13,5 +13,4 @@ You can find information about me on my [LinkedIn](https://www.linkedin.com/in/a
 
 Feel free to contact me by E-Mail - [hello@alexchirkin.me](mailto:hello@alexchirkin.me)
 
-
-If you found some error or want to contribute to this project - [GitHub](https://github.com/b0000ring/chart-example).
+My GitHub profile - [GitHub](https://github.com/b0000ring).
