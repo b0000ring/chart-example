@@ -75,14 +75,14 @@ function dots1() {
       })
   }
 
-  let handleMousemove = (event) => {
+  function handleMousemove(event) {
     mouseCoords = {
       x: event.x,
       y: event.y
     }
   };
   
-  let throttle = (func, delay) => {
+  function throttle(func, delay) {
     let prev = Date.now() - delay;
     return (...args) => {
       let current = Date.now();

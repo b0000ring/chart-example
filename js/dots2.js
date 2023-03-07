@@ -3,7 +3,10 @@ function dots2() {
   let svgElement = document.getElementById('dots')
   let width = svgElement.getBoundingClientRect().width
   let height = svgElement.getBoundingClientRect().height
+  let offsetx = 0
+  let offsety = 0
 
+  const border = 100
   const speed = 3
   const maxDeep = 256
 
@@ -13,6 +16,7 @@ function dots2() {
     })
 
   const svg = d3.select('#dots')
+  const g = svg.append('g')
 
   const container = document.querySelector('.container')
 
@@ -21,7 +25,7 @@ function dots2() {
     timeout = setTimeout(changeSize, 100)
   })
 
-  svg.selectAll('circle')
+  g.selectAll('circle')
     .data(data)
     .enter()
     .append('circle')
@@ -32,12 +36,17 @@ function dots2() {
     .style('fill', 'grey')
 
   function update() {
-    const selection = svg.selectAll('circle')
+    const selection = g.selectAll('circle')
+
+    g
+      .transition()
+      .duration(100)
+      .attr('transform', `translate(${offsetx}, ${offsety})`)
   
     data = data.map(item => {
       const x = getCoord(item.x, item.z, width)
       const y = getCoord(item.y, item.z, height)
-      if(item.z < 1 || x < 0 || y < 0 || x > width || y > height) {
+      if(item.z < 1 || x < -border || y < -border || x > width + border || y > height + border) {
         return getDefaultDot()
       }
 
@@ -78,6 +87,23 @@ function dots2() {
     height = svgElement.getBoundingClientRect().height
   }
 
+  function handleMousemove(event) {
+    offsetx = (event.x - width / 2) / 10
+    offsety = (event.y - height / 2) / 10
+  };
+  
+  function throttle(func, delay) {
+    let prev = Date.now() - delay;
+    return (...args) => {
+      let current = Date.now();
+      if (current - prev >= delay) {
+        prev = current;
+        func.apply(null, args);
+      }
+    }
+  };
+
+  document.addEventListener('mousemove', throttle(handleMousemove, 50));
   resize_ob.observe(container)
   setInterval(update, 30)
 }
