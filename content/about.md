@@ -13,4 +13,4 @@ You can find information about me on my [LinkedIn](https://www.linkedin.com/in/a
 
 Feel free to contact me by E-Mail - [hello@alexchirkin.me](mailto:hello@alexchirkin.me)
 
-My GitHub profile - [GitHub](https://github.com/b0000ring).
+My GitHub profile - [GitHub](https://github.com/b0000ring)
