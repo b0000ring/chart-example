@@ -18,7 +18,6 @@
   position: relative;
   margin: 0;
   width: 100%;
-  height: 223px;
 }
 
 .charts .posts-list {
@@ -118,17 +117,19 @@ svg:not(:root) {
   justify-content: center;
   text-align: center;
 }
+
 #dots {
   background-color: inherit;
 }
+
 @media (prefers-color-scheme: dark) {
-  svg {
+  .plot {
     background-color: #2e2e2e;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  svg {
+  .plot {
     background-color: #fafafa;
   }
 }
