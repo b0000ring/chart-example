@@ -156,7 +156,7 @@ Basically, that can be any effect of possible user input not directly related to
 <p>For the simple plot, which represents some data without big data processing or the expectation of user input, the destruction step can be used to redraw the entire visualization, instead of separating update logic. This means that the plot should be destroyed and rendered again from scratch on any data update. This approach helps to keep plot rendering logic straightforward, but it also clears any state the plot can store.</p>
 <p><em>The Example below shows that zoom and scroll position will be reset after any data update and plot redraw (try to scroll or zoom and then click on the &lsquo;Update data&rsquo; button)</em></p>
 
-<svg style="width: 100%; height:300px" id="example1"></svg>
+<svg class="plot" style="width: 100%; height:300px" id="example1"></svg>
 <button onclick="addExample1Data()">Update data</button>
 <script src="/blog/chart-lifecycle/example1.js"></script>
 
@@ -273,7 +273,7 @@ Basically, that can be any effect of possible user input not directly related to
 <p>The concrete condition may be different, it depends on the implementation of the plot. For example check of the root container (like some g element or svg element itself) emptiness can be used for that.</p>
 <p><em>Try to scroll or zoom and then click on the &lsquo;Update data&rsquo; button, the position will be the same after plot update</em></p>
 
-<svg style="width: 100%; height:300px" id="example2"></svg>
+<svg class="plot" style="width: 100%; height:300px" id="example2"></svg>
 <button onclick="addExample2Data()">Update data</button>
 <script src="/blog/chart-lifecycle/example2.js"></script>
 
@@ -421,7 +421,7 @@ Basically, that can be any effect of possible user input not directly related to
 <p>The main thing to consider is that the update function should be stored and accessible in the application.</p>
 <p><em>In the example below try to click on some nodes. Their data will be added to the internal Set object and will be used between re-renders to highlight selected nodes with different color</em></p>
 
-<svg style="width: 100%; height:300px" id="example3"></svg>
+<svg class="plot" style="width: 100%; height:300px" id="example3"></svg>
 <button onclick="addExample3Data()">Update data</button>
 <script src="/blog/chart-lifecycle/example3.js"></script>
 
