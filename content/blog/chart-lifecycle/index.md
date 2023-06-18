@@ -15,7 +15,7 @@ aliases:
 - /blog/chart-lifecycle/
 ---
 
-![Tux, the Linux mascot](/covers/state-lifecycle.png)
+![D3 chart lifecycle](/covers/state-lifecycle.png)
 
 Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, 
 sometimes it may be unclear how to properly connect the plot and the application.
