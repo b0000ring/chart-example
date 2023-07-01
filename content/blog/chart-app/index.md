@@ -1,7 +1,7 @@
 ---
 author:
 name: "Alex Chirkin"
-date: 2023-05-07
+date: 2023-10-07
 linktitle: Complex chart as Front-End application
 title: Complex chart as Front-End application
 type:
