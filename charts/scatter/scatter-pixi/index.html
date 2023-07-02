@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Alex Chirkin ">
+<meta name="description" content="Scatter chart PIXI.js example" />
+<meta name="keywords" content="chartexample.com, blog, charts, d3, visualizations, plots" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://chartexample.com/charts/scatter/scatter-pixi/" />
+
+
+    <title>
+        
+            Scatter chart PIXI.js example :: chartexample.com  — Blog about creating charts and data visualizations
+        
+    </title>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+<link rel="stylesheet" href="/main.14ebb2bdf48093b5d86ce6df5b88b815b907e3c52d59024151a56e018ff1e6c8.css" integrity="sha256-FOuyvfSAk7XYbObfW4i4FbkH48UtWQJBUaVuAY/x5sg=">
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/style.css">
+    
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<meta itemprop="name" content="Scatter chart PIXI.js example">
+<meta itemprop="description" content="Scatter chart PIXI.js example">
+
+<meta itemprop="wordCount" content="2842"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://chartexample.com"/>
+
+<meta name="twitter:title" content="Scatter chart PIXI.js example"/>
+<meta name="twitter:description" content="Scatter chart PIXI.js example"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark"></span>
+            <span class="logo__text ">
+                chartexample.com
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/charts">Charts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post chart">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+  
+        <article>
+            <h2 class="post-title"><a href="https://chartexample.com/charts/scatter/scatter-pixi/">Scatter chart PIXI.js example</a></h2>
+            <ul id="breadcrumbs">
+  <li><a href="/">Home</a></li><li><a href="/charts">Charts</a></li><li><a href="/charts/scatter">Scatter</a></li><li><a href="/charts/scatter/scatter-pixi">Scatter chart PIXI.js example</a></li></ul>
+
+            
+
+            <div class="post-content">
+                <svg class="plot" id="chart"></div>
+                <div id="canvasContainer"></div>
+                <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeScatter</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Basic settings for plot customisation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">width</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Data item visual element radius
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fontSize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">14</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;canvasContainer&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisNames</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;valx&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;valy&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Simple dataset with random values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">1000</span>).<span style="color:#a6e22e">fill</span>(<span style="color:#66d9ef">null</span>).<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span>) =&gt; ({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">valx</span><span style="color:#f92672">:</span> Math.<span style="color:#a6e22e">ceil</span>((Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> (<span style="color:#a6e22e">max</span>))),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">valy</span><span style="color:#f92672">:</span> Math.<span style="color:#a6e22e">ceil</span>((Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> (<span style="color:#a6e22e">max</span>)))
+</span></span><span style="display:flex;"><span>  }))
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// The plot function call
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">scatter</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">axisNames</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">container</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">height</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">padding</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">r</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">max</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fontSize</span>
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">init</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Main plot function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Contains general rendering logic and interactivity update callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">scatter</span>(<span style="color:#a6e22e">params</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Extracting parameters used in the main function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">container</span>, <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">max</span>, ...<span style="color:#a6e22e">options</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">params</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting scale function for horizontal values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scalex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Scale</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Values range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">max</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Plot horizontal size range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>]
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting scale function for vertical values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaley</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Scale</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Values range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">max</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Plot vertical size range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>]
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the default PIXI app
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Application</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// PIXI app container width
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">width</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// PIXI app container height
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">height</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// PIXI app container background
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">background</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#2e2e2e&#39;</span>
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting popup container component and methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">popup</span>, ...<span style="color:#a6e22e">popupMethods</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">getPopup</span>(<span style="color:#a6e22e">options</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting dots container with items
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dots</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">renderDots</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Using scale functions on each data item to get values from coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; ({
+</span></span><span style="display:flex;"><span>      ...<span style="color:#a6e22e">item</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">scalex</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#a6e22e">item</span>[<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">x</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">scaley</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#a6e22e">item</span>[<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">y</span>])
+</span></span><span style="display:flex;"><span>    })),
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Passing popupMethods as parameters to bind popup event to items interactions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">popupMethods</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Passing other plot options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">options</span>
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting xAxis container and elements using scalex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAxisX</span>(<span style="color:#a6e22e">scalex</span>, <span style="color:#a6e22e">options</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting yAxis container and elements using scaley
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">axisY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAxisY</span>(<span style="color:#a6e22e">scaley</span>, <span style="color:#a6e22e">options</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting interactivity callbacks from Interactivity instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">zoom</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">startScroll</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stopScroll</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">onScroll</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Passing onInteraction callback as the constructor parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// (which will be called after each interaction event is fired)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Interactivity</span>(<span style="color:#a6e22e">onInteraction</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying interactivity events on app container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;mousedown&#39;</span>, <span style="color:#a6e22e">startScroll</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;mouseup&#39;</span>, <span style="color:#a6e22e">stopScroll</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;mousemove&#39;</span>, <span style="color:#a6e22e">onScroll</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Touch events need to get initial touch with coordinates first
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;touchstart&#39;</span>, (<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">startScroll</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">touches</span>[<span style="color:#ae81ff">0</span>]), <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;touchend&#39;</span>, (<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">stopScroll</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">touches</span>[<span style="color:#ae81ff">0</span>]), <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;touchmove&#39;</span>, (<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">onScroll</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">touches</span>[<span style="color:#ae81ff">0</span>]), <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>.<span style="color:#a6e22e">onwheel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">zoom</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying plot components to the app
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">stage</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">dots</span>, <span style="color:#a6e22e">axisX</span>, <span style="color:#a6e22e">axisY</span>, <span style="color:#a6e22e">popup</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Adding the application canvas to the container element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">view</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the onInteraction callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// Offset represents the current plot x and y coordinate offsets
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// (value does not take scale into account)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// Scale represents the current plot scale
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onInteraction</span>(<span style="color:#a6e22e">offset</span>, <span style="color:#a6e22e">scale</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the scale of the data items container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// (only data items need to be scaled visually)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dots</span>.<span style="color:#a6e22e">scale</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">scale</span>, <span style="color:#a6e22e">scale</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Removing outdated axes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">stage</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">axisX</span>, <span style="color:#a6e22e">axisY</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Applying the new offset to the data items container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// (only data items need to be moved visually)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dots</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">x</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dots</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the new scale data values range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// This must be done to recalculate axes values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newMaxX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scalex</span>.<span style="color:#a6e22e">invert</span>(
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">scalex</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#a6e22e">max</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newMinX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scalex</span>.<span style="color:#a6e22e">invert</span>(
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">scalex</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newMaxY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">scaley</span>.<span style="color:#a6e22e">invert</span>(
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">scaley</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newMinY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">scaley</span>.<span style="color:#a6e22e">invert</span>(
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">scaley</span>.<span style="color:#a6e22e">scale</span>(<span style="color:#a6e22e">max</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">scale</span>)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Creating new horizontal and vertical scales with the new data range values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newScaley</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Scale</span>(
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">newMinY</span>, <span style="color:#a6e22e">newMaxY</span>],
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newScalex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Scale</span>(
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">newMinX</span>, <span style="color:#a6e22e">newMaxX</span>],
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">padding</span>]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Creating new axes with recalculated scales
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// This way axes will show values taking into account
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// the updated shift and scale values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAxisX</span>(<span style="color:#a6e22e">newScalex</span>, <span style="color:#a6e22e">options</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">axisY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAxisY</span>(<span style="color:#a6e22e">newScaley</span>, <span style="color:#a6e22e">options</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Applying the new axes to the app container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">stage</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">axisX</span>, <span style="color:#a6e22e">axisY</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that creates a container for data item elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and adds them to it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderDots</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">handlers</span>, <span style="color:#a6e22e">options</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the main container for data items
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Container</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting necessary parameters from the options object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">axisNames</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">options</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting interactivity handlers from the handlers parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">showPopup</span>, <span style="color:#a6e22e">hidePopup</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">handlers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calling the renderDot function for each data item
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">renderDot</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the container with data items
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">container</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Function that adds data item graphics to the data items container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderDot</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Creating PIXI graphics for the data item
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dot</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Graphics</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the event mode to &#39;dynamic&#39; so
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// interactivity events can be called for this graphics
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">eventMode</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;dynamic&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Adding item data to the current graphics object as a custom property,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// so this data can be used later in interactivity events
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">__data__</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the cursor style on element hover
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">cursor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;pointer&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the element line style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">lineStyle</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0xBB86FC</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the element fill (background) style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">beginFill</span>(<span style="color:#ae81ff">0x755A96</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Drawing the actual graphic (circle) in the graphics element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// For the y coordinate, the position is calculated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//  from the bottom of the canvas as values should grow from bottom to top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">drawCircle</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">r</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting interactivity handlers for the graphic element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">onmouseenter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">onmouseenter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dot</span>.<span style="color:#a6e22e">onmouseleave</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">onmouseleave</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Adding the graphic element for the specific data item
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// to the data items main container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">dot</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the mouseenter event handler
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// e - PIXI event object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// &#39;this&#39; in this function will refer to the graphic element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// for which the event handler was called
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onmouseenter</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the tint for the item element to &#39;highlight&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// the element that was hovered by the pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">tint</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xBB86FC</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Getting the original browser event object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// which contains global pointer coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">originalEvent</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calling the showPopup interactivity handler,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// which renders a popup with the interactivity event target data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">showPopup</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Creating the popup content from the data info 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// that was stored in the graphic element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#e6db74">`id: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">__data__</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">${</span><span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">x</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">__data__</span>[<span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">x</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">${</span><span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">y</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">__data__</span>[<span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">y</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      `</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Passing the pointer coordinates from the original event object,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">//  so the popup will be rendered where the pointer is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">global</span>.<span style="color:#a6e22e">x</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">global</span>.<span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the mouseleave event handler
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onmouseleave</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Removing the element &#39;highlight&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">tint</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFFFFFF</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calling the hidePopup interactivity handler
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// to remove the popup with the selected item data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">hidePopup</span>()
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that creates a container with the y-axis and its elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getAxisY</span>(<span style="color:#a6e22e">values</span>, { <span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">fontSize</span>, <span style="color:#a6e22e">axisNames</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Count of ticks that will be rendered on the axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">steps</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Initial axis coordinates (top-left corner, accounting for padding)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">startx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">padding</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">starty</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">padding</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calculating the total length of the axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// It should have a length of the total height minus padding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// and minus the distance to the start y-coordinate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">starty</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calling the general getAxis function to get the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// and the axis line of a specific size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axis</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAxis</span>(<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calling the getTicks function that creates the ticks container,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// calculates the values, and adds the tick elements to the container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ticks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTicks</span>(<span style="color:#a6e22e">values</span>, <span style="color:#a6e22e">steps</span>, <span style="color:#a6e22e">fontSize</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// For every tick, calling the applyTickCoord function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// that applies the tick coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ticks</span>.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">applyTickCoord</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Slight offset of the entire ticks for better visibility
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ticks</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calling the getLabel function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// that creates the label object for the axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getLabel</span>(<span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">fontSize</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying the label coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Adding the ticks and label to the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">axis</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">ticks</span>, <span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying the axis coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">axis</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">startx</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">axis</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">starty</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">axis</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Function that applies the tick coordinates for the Y axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyTickCoord</span>(<span style="color:#a6e22e">tick</span>, <span style="color:#a6e22e">i</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculation of the width of one step (tick)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stepWidth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">length</span> <span style="color:#f92672">/</span> (<span style="color:#a6e22e">steps</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the offset for each step
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offset</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">stepWidth</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">i</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the x-coordinate (to the left from the axis line)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">tick</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">tick</span>.<span style="color:#a6e22e">width</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the y-coordinate for the tick (from bottom to top)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">tick</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">offset</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">fontSize</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that creates a container with the x-axis and its elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The base logic is the same as in getAxisY 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// but with different coordinate calculations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getAxisX</span>(<span style="color:#a6e22e">values</span>, { <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">padding</span>, <span style="color:#a6e22e">fontSize</span>, <span style="color:#a6e22e">axisNames</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">steps</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">startx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">padding</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">starty</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">startx</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axis</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAxis</span>(<span style="color:#a6e22e">length</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ticks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTicks</span>(<span style="color:#a6e22e">values</span>, <span style="color:#a6e22e">steps</span>, <span style="color:#a6e22e">fontSize</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stepWidth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">length</span> <span style="color:#f92672">/</span> (<span style="color:#a6e22e">steps</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// For every tick, calling the applyTickCoord function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// that applies the tick coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ticks</span>.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">applyTickCoord</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Slight offset for better visibility (below the axis line)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ticks</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calling the getLabel function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// that creates the label object for the axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getLabel</span>(<span style="color:#a6e22e">axisNames</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">fontSize</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying the label coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">length</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Adding the ticks and label to the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">axis</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">ticks</span>, <span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying the axis coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">axis</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">startx</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">axis</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">starty</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">axis</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Function that applies the tick coordinates for the X axis
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyTickCoord</span>(<span style="color:#a6e22e">tick</span>, <span style="color:#a6e22e">i</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offset</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">stepWidth</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">i</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tick</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">offset</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">tick</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tick</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that creates an axis label object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getLabel</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">fontSize</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating a label text object by calling PIXI.Text
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Text</span>(<span style="color:#a6e22e">name</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Applying text options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fill</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0xFFFFFF</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fontSize</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fontSize</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fontWeight</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bold&#39;</span>
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the label object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">label</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that creates an axis container and axis line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getAxis</span>(<span style="color:#a6e22e">endx</span>, <span style="color:#a6e22e">endy</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Container</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the axis line graphics
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">graphics</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Graphics</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Setting the axis line style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">graphics</span>.<span style="color:#a6e22e">lineStyle</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0xFFFFFF</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Setting the line fill color (if it will be wider than 1 px)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">graphics</span>.<span style="color:#a6e22e">beginFill</span>(<span style="color:#ae81ff">0xFFFFFF</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Drawing the axis line by calling the drawRect function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">graphics</span>.<span style="color:#a6e22e">drawRect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">endx</span>, <span style="color:#a6e22e">endy</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Adding the axis line to the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">graphics</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the axis container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">container</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that creates an axis ticks container and fills it with calculated ticks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getTicks</span>(<span style="color:#a6e22e">scale</span>, <span style="color:#a6e22e">steps</span>, <span style="color:#a6e22e">fontSize</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the ticks container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Container</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Getting the axis data range from the scale as these values are used to create the scale
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">range</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scale</span>.<span style="color:#a6e22e">valueRange</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calculating and rounding the final (biggest) value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">finalValue</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">ceil</span>(<span style="color:#a6e22e">range</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Calculating the value for each step
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">step</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">finalValue</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">range</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">steps</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating a temporary ticks array that will be used for value calculations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  Array.<span style="color:#a6e22e">from</span>({ <span style="color:#a6e22e">length</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">steps</span> }).<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calling the getTickValue function that returns the value for each tick based on its position
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTickValue</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calling the getTick function that creates the graphical tick object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTick</span>(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Adding the tick object to the ticks container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">tick</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the ticks container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">container</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Helper function for getting the tick value based on its position in the line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getTickValue</span>(<span style="color:#a6e22e">position</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the tick value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">range</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">position</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">step</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Rounding the tick value and returning it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">ceil</span>(<span style="color:#a6e22e">value</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Function that creates the tick graphical object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getTick</span>(<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Returning the tick object using the PIXI.Text function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Text</span>(<span style="color:#a6e22e">value</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Applying tick options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">fill</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0xFFFFFF</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fontSize</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fontSize</span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function that returns a container and handlers for the popup
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getPopup</span>({ <span style="color:#a6e22e">fontSize</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Setting the internal popup padding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the general popup container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">popup</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Container</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the popup graphics object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">wrapper</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Graphics</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Creating the internal popup content object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PIXI</span>.<span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;&#39;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the popup content options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fill</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0xFFFFFF</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fontSize</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fontSize</span>
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Applying the popup graphics and content objects to the container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">popup</span>.<span style="color:#a6e22e">addChild</span>(<span style="color:#a6e22e">wrapper</span>, <span style="color:#a6e22e">text</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Returning the popup container and handlers
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">popup</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hidePopup</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">showPopup</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Handler to be called when the popup should be opened
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showPopup</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the popup text content
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the popup text content coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">padding</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">padding</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Making the popup container graphics visible by drawing it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Setting the container border style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">lineStyle</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0xFFFFFF</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the container background style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">beginFill</span>(<span style="color:#ae81ff">0x2E2E2E</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Drawing the container rectangle with a size to fit the popup text
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">drawRect</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">padding</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">padding</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">height</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Handler to be called when the popup should be hidden
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">hidePopup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Removing the popup text from the container
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Clearing the popup container graphics
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">clear</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// This is a class that contains state and an API for interactive plot calculations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Interactivity</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that stores the scale (zoom) value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">scale</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that stores the current offset value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">offset</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that stores the total (global) offset
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// It stores the offset value before the current scrolling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">_totalOffset</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that contains the mouse position
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// at the moment of scrolling start
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">_mousePosition</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that indicates whether the mouse button is pressed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isDown</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that will contain the update callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// The value will be assigned in the constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onUpdate</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">onInteraction</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Assigning the update callback to its property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onUpdate</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">onInteraction</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Zoom handler that should be called on the onwheel event in PIXI
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">zoom</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Scale borders
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleMin</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleMax</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Getting the rounded value of how much was &#39;scrolled&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">deltaY</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the scale change step
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleStep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculating the new scale value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newScale</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">scale</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">scaleStep</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Checking scale borders to prevent excessive scaling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">newScale</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">scaleMax</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">newScale</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">scaleMin</span>) <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Setting the new scale
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">scale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newScale</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calling the update handler
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">update</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Returning false to prevent page scrolling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Scroll start handler that needs to be assigned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// to the app container&#39;s mousedown event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">startScroll</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Checking if scrolling is not in progress to prevent conflict
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isDown</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Setting the isDown property to indicate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// that the mouse button is pressed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isDown</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Setting the mouse position at the moment of scrolling start
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_mousePosition</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">clientX</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">clientY</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Scroll stop handler that needs to be assigned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// to the app container&#39;s mouseup event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">stopScroll</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Checking if scrolling is in progress
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isDown</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Setting the isDown property to false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// to indicate that the mouse button is not pressed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isDown</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Setting the total offset data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// that will be used for the next scrolling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_totalOffset</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        ...<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">offset</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Scroll handler that needs to be assigned to the app container&#39;s mousemove event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onScroll</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Checking if scrolling is in progress
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isDown</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Calculating and saving the new offset coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_mousePosition</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">clientX</span>) <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_totalOffset</span>.<span style="color:#a6e22e">x</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">offset</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_mousePosition</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">clientY</span>) <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_totalOffset</span>.<span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Calling the update handler
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">update</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Update handler
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">update</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calling the onUpdate callback and passing offset and scale data to it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onUpdate</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">offset</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">scale</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// This is a class that provides an API for value scaling calculations between two ranges
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Scale</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that stores the range of possible values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">valueRange</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that stores the target range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">targetRange</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Property that stores the scaling factor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">valueRange</span>, <span style="color:#a6e22e">targetRange</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Save the value and target ranges
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">valueRange</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">valueRange</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">targetRange</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">targetRange</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate and save the scaling factor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">targetRange</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">targetRange</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">valueRange</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">valueRange</span>[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// A method that allows scaling a value from the value range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// to a value in the target range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">scale</span>(<span style="color:#a6e22e">num</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate and return the scaled value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">targetRange</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> (
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span> (<span style="color:#a6e22e">num</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">valueRange</span>[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// A method that allows inverting a scaled value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// to its original value in the original range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">invert</span>(<span style="color:#a6e22e">num</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Calculate and return the original value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">num</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">targetRange</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">valueRange</span>[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+        <script src="/charts/scatter/pixi.js"></script>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            <span><a href="https://chartexample.com">Alex Chirkin</a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.c90b8161416b87c69a8e02683b54ddd6edb90aea699648bf655e6cbc45b419b8e465d196e715772463dba35a6faf5decb2eb247480d38680484d54645b434570.js" integrity="sha512-yQuBYUFrh8aajgJoO1Td1u25Cupplki/ZV5svEW0GbjkZdGW5xV3JGPbo1pvr13ssuskdIDThoBITVRkW0NFcA=="></script>
+
+
+    
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+
+    
+        <script src="https://pixijs.download/release/pixi.js"></script>
+    
+
+
+    </body>
+</html>

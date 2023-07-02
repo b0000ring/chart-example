@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spa on chartexample.com</title>
+    <link>https://chartexample.com/tags/spa/</link>
+    <description>Recent content in spa on chartexample.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 02 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chartexample.com/tags/spa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chart integration for modern web applications</title>
+      <link>https://chartexample.com/blog/chart-integration/</link>
+      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://chartexample.com/blog/chart-integration/</guid>
+      <description>Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
+However, things can get more challenging when your chart requires responsiveness to user actions or data updates.</description>
+    </item>
+    
+  </channel>
+</rss>

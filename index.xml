@@ -5,9 +5,19 @@
     <link>https://chartexample.com/</link>
     <description>Recent content on chartexample.com</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://chartexample.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chartexample.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chart integration for modern web applications</title>
+      <link>https://chartexample.com/blog/chart-integration/</link>
+      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://chartexample.com/blog/chart-integration/</guid>
+      <description>Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
+However, things can get more challenging when your chart requires responsiveness to user actions or data updates.</description>
+    </item>
+    
     <item>
       <title>State in D3 chart lifecycle</title>
       <link>https://chartexample.com/blog/chart-lifecycle/</link>
@@ -109,6 +119,15 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       
       <guid>https://chartexample.com/charts/scatter/scatter-d3/</guid>
       <description>function makeScatter() { // max data item value const max = 100 // min data item value const min = 0 const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; // generating dataset const data = new Array(100).fill().map(() =&amp;gt; ({ x: (Math.random() * max) | 0, y: (Math.random() * max) | 0 })) // setting values for margins of svg content const margin = {top: 30, left: 50, right: 30, bottom: 50} // selecting svg container const svg = d3.</description>
+    </item>
+    
+    <item>
+      <title>Scatter chart PIXI.js example</title>
+      <link>https://chartexample.com/charts/scatter/scatter-pixi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chartexample.com/charts/scatter/scatter-pixi/</guid>
+      <description>function makeScatter() { // Basic settings for plot customisation const padding = 90 const height = width const max = 1000 // Data item visual element radius const r = 5 const fontSize = 14 const container = document.getElementById(&amp;#39;canvasContainer&amp;#39;) const axisNames = { x: &amp;#39;valx&amp;#39;, y: &amp;#39;valy&amp;#39; } // Simple dataset with random values const data = new Array(1000).fill(null).map((_, i) =&amp;gt; ({ id: i, valx: Math.ceil((Math.random() * (max))), valy: Math.ceil((Math.random() * (max))) })) // The plot function call scatter({ axisNames, container, width, height, data, padding, r, max, fontSize }) } window.</description>
     </item>
     
     <item>
