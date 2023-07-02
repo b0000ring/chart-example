@@ -16,9 +16,6 @@ paginate     = 10
   # Subtitle for home
   homeSubtitle = "Blog about creating charts and data visualizations"
 
-  # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  disableReadOtherPosts = false
-
   # Enable sharing buttons, if you like
   enableSharingButtons = true
 
@@ -29,9 +26,6 @@ paginate     = 10
 
 [permalinks]
   posts = "/posts/:year/:month/:title/"
-
-disableReadOtherPosts = false
-
     
 [languages]
   [languages.en]
