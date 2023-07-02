@@ -1,7 +1,7 @@
 ---
 author:
 name: "Alex Chirkin"
-date: 2023-06-03
+date: 2023-06-02
 linktitle: Chart integration for modern web applications
 title: Chart integration for modern web applications
 type:
