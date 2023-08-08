@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Alex Chirkin ">
 <meta name="description" content="Scatter chart D3.js example" />
-<meta name="keywords" content="chartexample.com, blog, charts, d3, visualizations, plots" />
+<meta name="keywords" content="chart, blog, d3, chart.js, examples" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://chartexample.com/charts/scatter/scatter-d3/" />
@@ -39,7 +39,7 @@
 <meta itemprop="name" content="Scatter chart D3 example">
 <meta itemprop="description" content="Scatter chart D3.js example">
 
-<meta itemprop="wordCount" content="460"><meta itemprop="image" content="https://chartexample.com"/>
+<meta itemprop="wordCount" content="479"><meta itemprop="image" content="https://chartexample.com"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chartexample.com"/>
@@ -159,7 +159,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">width</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">right</span>])
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating linear scaling for Y axis
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scaleY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>])
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// setting values domain
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// from max to min to reverese y axis values (increasing from bottom to top)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">domain</span>([<span style="color:#a6e22e">max</span>, <span style="color:#a6e22e">min</span>])
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">range</span>([<span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">top</span>, <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">margin</span>.<span style="color:#a6e22e">bottom</span>])
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating of X axis 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">axisX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">axisBottom</span>(<span style="color:#a6e22e">scaleX</span>)
