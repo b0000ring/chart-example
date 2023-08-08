@@ -36,7 +36,7 @@ function makeScatter() {
     .range([margin.left, width - margin.right])
   // creating linear scaling for Y axis
   const scaleY = d3.scaleLinear()
-    .domain([min, max])
+    .domain([max, min])
     .range([margin.top, height - margin.bottom])
   // creating of X axis 
   const axisX = d3.axisBottom(scaleX)
