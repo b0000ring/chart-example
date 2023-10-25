@@ -11,8 +11,8 @@ function makeLinear() {
   //empty data set
   let data = [0, 0, 0, 0, 0, 0, 0, 0]
 
-  const strokeColor = '#bb86fc'
-  const fillColor = '#755a96'
+  const strokeColor = '#d0d4fc'
+  const fillColor = '#285674'
 
   // max data item value
   const max = 10

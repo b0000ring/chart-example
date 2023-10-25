@@ -72,7 +72,7 @@ function scatter(params) {
     // PIXI app container height
     height: options.height,
     // PIXI app container background
-    background: '#2e2e2e'
+    background: '#0f172a'
   })
 
   // Getting popup container component and methods
@@ -212,10 +212,10 @@ function renderDots(data, handlers, options) {
     dot.cursor = 'pointer'
 
     // Setting the element line style
-    dot.lineStyle(2, 0xBB86FC, 1)
+    dot.lineStyle(2, 0x285674, 1)
 
     // Setting the element fill (background) style
-    dot.beginFill(0x755A96, 1)
+    dot.beginFill(0xd0d4fc, 1)
 
     // Drawing the actual graphic (circle) in the graphics element
     // For the y coordinate, the position is calculated
@@ -238,7 +238,7 @@ function renderDots(data, handlers, options) {
   function onmouseenter(e) {
     // Setting the tint for the item element to 'highlight'
     // the element that was hovered by the pointer
-    this.tint = 0xBB86FC
+    this.tint = 0x285674
 
     // Getting the original browser event object
     // which contains global pointer coordinates

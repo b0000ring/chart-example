@@ -69,7 +69,7 @@ function drawExample2() {
     .data(nodes.links())
     .join('path')
     .attr('d', d => lnkMkr(d))
-    .attr('stroke', 'black')
+    .attr('stroke', '#d0d4fc')
     .attr('fill', 'none')
 
   content.selectAll('g')
@@ -84,7 +84,7 @@ function drawExample2() {
       .attr('href', '#node')
       .attr('x', d => d.x)
       .attr('y', d => d.y)
-      .attr('fill', 'red')
+      .attr('fill', '#285674')
 
     selection.append('text')
       .attr('x', d => d.x + 12)

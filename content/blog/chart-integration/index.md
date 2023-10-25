@@ -113,8 +113,8 @@ In this example, the plot is re-rendered when there is a change in data within t
   ``` js
   import * as d3  from 'd3'
 
-  const strokeColor = '#bb86fc'
-  const fillColor = '#755a96'
+  const strokeColor = '#d0d4fc'
+  const fillColor = '#285674'
   const padding = 30
   const max = 100
 

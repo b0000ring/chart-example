@@ -117,7 +117,7 @@ For the simple plot, which represents some data without big data processing or t
       .data(nodes.links())
       .join('path')
       .attr('d', d => lnkMkr(d))
-      .attr('stroke', 'black')
+      .attr('stroke', '#d0d4fc')
       .attr('fill', 'none')
 
     content.selectAll('g')
@@ -131,7 +131,7 @@ For the simple plot, which represents some data without big data processing or t
         .attr('href', '#node')
         .attr('x', d => d.x)
         .attr('y', d => d.y)
-        .attr('fill', 'red')
+        .attr('fill', '#285674')
 
       selection.append('text')
         .attr('x', d => d.x + 12)
@@ -243,7 +243,7 @@ The concrete condition may be different, it depends on the implementation of the
       .data(nodes.links())
       .join('path')
       .attr('d', d => lnkMkr(d))
-      .attr('stroke', 'black')
+      .attr('stroke', '#d0d4fc')
       .attr('fill', 'none')
 
     content.selectAll('g')
@@ -258,7 +258,7 @@ The concrete condition may be different, it depends on the implementation of the
         .attr('href', '#node')
         .attr('x', d => d.x)
         .attr('y', d => d.y)
-        .attr('fill', 'red')
+        .attr('fill', '#285674')
 
       selection.append('text')
         .attr('x', d => d.x + 12)
@@ -411,7 +411,7 @@ The main thing to consider is that the update function should be stored and acce
     }
 
     function getFill(d) {
-      return selected.has(d.data.name) ? 'green' : 'red'
+      return selected.has(d.data.name) ? '#4b59d2' : '#285674'
     }
 
     // function that updates everything that depends on the data
@@ -428,7 +428,7 @@ The main thing to consider is that the update function should be stored and acce
         .data(nodes.links())
         .join('path')
         .attr('d', d => lnkMkr(d))
-        .attr('stroke', 'black')
+        .attr('stroke', '#d0d4fc')
         .attr('fill', 'none')
 
       content.selectAll('g')

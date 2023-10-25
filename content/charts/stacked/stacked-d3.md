@@ -45,7 +45,7 @@ function makeStacked() {
   const scaleColors = d3.scaleQuantize()
       .domain([0, data.length])
       .range([
-        '#d7cde5', '#bc9fe6',  '#6200ee'
+        '#00b6e9', '#008ae6',  '#4b59d2'
       ]) 
 
   // creating of X axis
@@ -95,7 +95,7 @@ function makeStacked() {
     // setting fill color
     .attr('fill', (d, i) => scaleColors(i))
     // setting stroke color
-    .attr('stroke', '#d7cde5')
+    .attr('stroke', '#00b6e9')
     // setting stroke width
     .attr('stroke-width', 2)
 

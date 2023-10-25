@@ -17,7 +17,7 @@ function makePie() {
   const scaleColors = d3.scaleQuantize()
     .domain([0, data.length])
     .range([
-      '#6200ee', '#bc9fe6', '#d7cde5'
+      '#4b59d2', '#008ae6', '#00b6e9'
     ]) 
   
   // calling d3.pie to get data processing

@@ -29,9 +29,9 @@ function makeTree() {
     ]
   }
 
-  const strokeColor = '#bb86fc'
-  const fillColor = '#755a96'
-  const selectionColor = '#6200ee'
+  const strokeColor = '#d0d4fc'
+  const fillColor = '#285674'
+  const selectionColor = '#4b59d2'
 
   // selecting root element for plot
   const svg = d3.select('#chart')
