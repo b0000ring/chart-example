@@ -35,8 +35,8 @@ function makeNetwork() {
   // getting root element height
   const height = parseInt(svg.style('height')) 
   const padding = 70
-  const strokeColor = '#bb86fc'
-  const fillColor = '#755a96'
+  const strokeColor = '#d0d4fc'
+  const fillColor = '#285674'
 
   // generating network datastructure from the data
   // by using custom function

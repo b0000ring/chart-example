@@ -7,8 +7,8 @@ function makeBox() {
   // min data item value
   const min = 5
   const padding = 24
-  const strokeColor = '#bb86fc'
-  const fillColor = '#755a96'
+  const strokeColor = '#d0d4fc'
+  const fillColor = '#285674'
 
   // selecting root element for plot
   const svg = d3.select('#chart')

@@ -33,7 +33,7 @@ function dots2() {
     .attr('cx', (d) => getCoord(d.x, d.z, width))
     .attr('cy', (d) => getCoord(d.y, d.z, height))
     .style('opacity', '0')
-    .style('fill', 'grey')
+    .style('fill', '#285674')
 
   function update() {
     const selection = g.selectAll('circle')

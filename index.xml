@@ -55,7 +55,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/bar/bar-d3/</guid>
-      <description>function makeBar() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 50, left: 50, right: 30, bottom: 30} // selecting root element for plot const svg = d3.</description>
+      <description>function makeBar() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 50, left: 50, right: 30, bottom: 30} // selecting root element for plot const svg = d3.</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/box/box-d3/</guid>
-      <description>function makeBox() { //empty data set let data = new Array(10).fill() // max data item value const max = 15 // min data item value const min = 5 const padding = 24 const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // creating scale for Y axis // because x axis will be static const scaleY = d3.</description>
+      <description>function makeBox() { //empty data set let data = new Array(10).fill() // max data item value const max = 15 // min data item value const min = 5 const padding = 24 const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // creating scale for Y axis // because x axis will be static const scaleY = d3.</description>
     </item>
     
     <item>
@@ -73,7 +73,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/density/density-d3/</guid>
-      <description>function makeDensity() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 20, left: 50, right: 30, bottom: 40} // selecting root element for plot const svg = d3.</description>
+      <description>function makeDensity() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 20, left: 50, right: 30, bottom: 40} // selecting root element for plot const svg = d3.</description>
     </item>
     
     <item>
@@ -91,7 +91,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/linear/linear-d3/</guid>
-      <description>function makeLinear() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 30, left: 50, right: 30, bottom: 60} // selecting root element for plot const svg = d3.</description>
+      <description>function makeLinear() { //empty data set let data = [0, 0, 0, 0, 0, 0, 0, 0] const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; // max data item value const max = 10 // min data item value const min = 0 // setting values for margins of svg content const margin = {top: 30, left: 50, right: 30, bottom: 60} // selecting root element for plot const svg = d3.</description>
     </item>
     
     <item>
@@ -118,7 +118,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/scatter/scatter-d3/</guid>
-      <description>function makeScatter() { // max data item value const max = 100 // min data item value const min = 0 const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; // generating dataset const data = new Array(100).fill().map(() =&amp;gt; ({ x: (Math.random() * max) | 0, y: (Math.random() * max) | 0 })) // setting values for margins of svg content const margin = {top: 30, left: 50, right: 30, bottom: 50} // selecting svg container const svg = d3.</description>
+      <description>function makeScatter() { // max data item value const max = 100 // min data item value const min = 0 const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; // generating dataset const data = new Array(100).fill().map(() =&amp;gt; ({ x: (Math.random() * max) | 0, y: (Math.random() * max) | 0 })) // setting values for margins of svg content const margin = {top: 30, left: 50, right: 30, bottom: 50} // selecting svg container const svg = d3.</description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - Git
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://chartexample.com/charts/tree/tree-d3/</guid>
-      <description>function makeTree() { //data set const data = { name: &amp;#39;root&amp;#39;, children: [ {name: &amp;#39;child 1&amp;#39;}, { name: &amp;#39;child 2&amp;#39;, children: [ {name: &amp;#39;child 4&amp;#39;}, {name: &amp;#39;child 5&amp;#39;} ] }, { name: &amp;#39;child 3&amp;#39;, children: [ {name: &amp;#39;child 6&amp;#39;} ] } ] } const strokeColor = &amp;#39;#bb86fc&amp;#39; const fillColor = &amp;#39;#755a96&amp;#39; const selectionColor = &amp;#39;#6200ee&amp;#39; // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // setting cursor style .style(&amp;#39;cursor&amp;#39;, &amp;#39;pointer&amp;#39;) // getting root element width const width = parseInt(svg.</description>
+      <description>function makeTree() { //data set const data = { name: &amp;#39;root&amp;#39;, children: [ {name: &amp;#39;child 1&amp;#39;}, { name: &amp;#39;child 2&amp;#39;, children: [ {name: &amp;#39;child 4&amp;#39;}, {name: &amp;#39;child 5&amp;#39;} ] }, { name: &amp;#39;child 3&amp;#39;, children: [ {name: &amp;#39;child 6&amp;#39;} ] } ] } const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; const selectionColor = &amp;#39;#4b59d2&amp;#39; // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // setting cursor style .style(&amp;#39;cursor&amp;#39;, &amp;#39;pointer&amp;#39;) // getting root element width const width = parseInt(svg.</description>
     </item>
     
   </channel>

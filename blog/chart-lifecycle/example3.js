@@ -93,7 +93,7 @@ function drawExample3() {
   }
 
   function getFill(d) {
-    return selected.has(d.data.name) ? 'green' : 'red'
+    return selected.has(d.data.name) ? '#4b59d2' : '#285674'
   }
 
   // function that updates everything that depends on the data
@@ -110,7 +110,7 @@ function drawExample3() {
       .data(nodes.links())
       .join('path')
       .attr('d', d => lnkMkr(d))
-      .attr('stroke', 'black')
+      .attr('stroke', '#d0d4fc')
       .attr('fill', 'none')
 
     content.selectAll('g')

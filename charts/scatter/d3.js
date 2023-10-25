@@ -4,8 +4,8 @@ function makeScatter() {
   // min data item value
   const min = 0
 
-  const strokeColor = '#bb86fc'
-  const fillColor = '#755a96'
+  const strokeColor = '#d0d4fc'
+  const fillColor = '#285674'
 
   // generating dataset
   const data = new Array(100).fill().map(() => ({
