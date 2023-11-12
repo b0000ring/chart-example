@@ -10,6 +10,8 @@ paginate     = 10
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
+  EnableThemeToggle = true
+
   customCSS = ["/style.css"]
   customJS = ["https://d3js.org/d3.v7.min.js", "https://pixijs.download/release/pixi.js"]
 
@@ -59,6 +61,16 @@ paginate     = 10
 
 [author]
   name = "Alex Chirkin"
+
+[[params.social]]
+  name = "github"
+  url = "https://github.com/b0000ring"
+
+[[params.social]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/achirkin/"
+
+  
 
 [params.footer]
     author = true
