@@ -6,15 +6,14 @@
     <description>Recent content in Box chart examples on chartexample.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><atom:link href="https://chartexample.com/charts/box/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <atom:link href="https://chartexample.com/charts/box/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Box chart D3 example</title>
       <link>https://chartexample.com/charts/box/box-d3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://chartexample.com/charts/box/box-d3/</guid>
       <description>function makeBox() { //empty data set let data = new Array(10).fill() // max data item value const max = 15 // min data item value const min = 5 const padding = 24 const strokeColor = &amp;#39;#d0d4fc&amp;#39; const fillColor = &amp;#39;#285674&amp;#39; // selecting root element for plot const svg = d3.select(&amp;#39;#chart&amp;#39;) // getting root element width const width = parseInt(svg.style(&amp;#39;width&amp;#39;)) // getting root element height const height = parseInt(svg.style(&amp;#39;height&amp;#39;)) // creating scale for Y axis // because x axis will be static const scaleY = d3.</description>
     </item>
-    
   </channel>
 </rss>
