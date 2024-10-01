@@ -13,7 +13,7 @@ paginate     = 10
   EnableThemeToggle = true
 
   customCSS = ["/style.css"]
-  customJS = ["https://d3js.org/d3.v7.min.js", "https://pixijs.download/release/pixi.js"]
+  customJS = ["https://d3js.org/d3.v7.min.js", "https://unpkg.com/pixi.js@7.x/dist/pixi.min.js"]
 
   # Subtitle for home
   homeSubtitle = "Blog about creating charts and data visualizations"
