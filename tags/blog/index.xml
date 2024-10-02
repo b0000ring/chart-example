@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog on chartexample.com</title>
+    <title>Blog on chartexample.com</title>
     <link>https://chartexample.com/tags/blog/</link>
-    <description>Recent content in blog on chartexample.com</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Blog on chartexample.com</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Fri, 02 Jun 2023 00:00:00 +0000</lastBuildDate>
@@ -14,25 +14,21 @@
       <link>https://chartexample.com/blog/chart-integration/</link>
       <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
       <guid>https://chartexample.com/blog/chart-integration/</guid>
-      <description>Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
-However, things can get more challenging when your chart requires responsiveness to user actions or data updates.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;Chart integration&#34; src=&#34;https://chartexample.com/covers/plot-integration.png&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.&lt;/p&gt;&#xA;&lt;p&gt;However, things can get more challenging when your chart requires responsiveness to user actions or data updates. If the application&amp;rsquo;s rendering flow is beyond your control or if you need to implement additional logic to handle actions or updates, the integration task becomes more complex.&lt;/p&gt;</description>
     </item>
     <item>
       <title>State in D3 chart lifecycle</title>
       <link>https://chartexample.com/blog/chart-lifecycle/</link>
       <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
       <guid>https://chartexample.com/blog/chart-lifecycle/</guid>
-      <description>Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
-Plot internal state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;D3 chart lifecycle&#34; src=&#34;https://chartexample.com/covers/state-lifecycle.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application,&#xA;sometimes it may be unclear how to properly connect the plot and the application.&#xA;In this article, I describe some ways to update plots with saving their internal state.&lt;/p&gt;&#xA;&lt;h2 id=&#34;plot-internal-state&#34;&gt;Plot internal state&lt;/h2&gt;&#xA;&lt;p&gt;When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added. And with interactivity usually comes state and with that, the complexity of the plot lifecycle can increase rapidly. Many different things can be stored in the plot state, like scrolling position, selected elements, zoom value, etc.&#xA;Basically, that can be any effect of possible user input not directly related to data changes.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About chartexample.com</title>
       <link>https://chartexample.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chartexample.com/about/</guid>
-      <description>chartexample.com - my personal blog where I implement different types of charts by using set of javascript (and sometimes other) libraries.
-You can find information about me on my LinkedIn page
-Feel free to contact me by E-Mail - hello@alexchirkin.me My GitHub profile - GitHub </description>
+      <description>&lt;p&gt;chartexample.com - my personal blog where I implement different types of charts by using set of javascript (and sometimes other) libraries.&lt;/p&gt;&#xA;&lt;p&gt;You can find information about me on my &lt;a href=&#34;https://www.linkedin.com/in/achirkin&#34; target=&#34;_blank&#34;&gt;LinkedIn&lt;/a&gt;&#xA; page&lt;/p&gt;&#xA;&lt;p&gt;Feel free to contact me by E-Mail - &lt;a href=&#34;mailto:hello@alexchirkin.me&#34;&gt;hello@alexchirkin.me&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;My GitHub profile - &lt;a href=&#34;https://github.com/b0000ring&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&#xA;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

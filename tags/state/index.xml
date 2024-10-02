@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>state on chartexample.com</title>
+    <title>State on chartexample.com</title>
     <link>https://chartexample.com/tags/state/</link>
-    <description>Recent content in state on chartexample.com</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in State on chartexample.com</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate>
@@ -14,8 +14,7 @@
       <link>https://chartexample.com/blog/chart-lifecycle/</link>
       <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
       <guid>https://chartexample.com/blog/chart-lifecycle/</guid>
-      <description>Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
-Plot internal state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;D3 chart lifecycle&#34; src=&#34;https://chartexample.com/covers/state-lifecycle.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application,&#xA;sometimes it may be unclear how to properly connect the plot and the application.&#xA;In this article, I describe some ways to update plots with saving their internal state.&lt;/p&gt;&#xA;&lt;h2 id=&#34;plot-internal-state&#34;&gt;Plot internal state&lt;/h2&gt;&#xA;&lt;p&gt;When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added. And with interactivity usually comes state and with that, the complexity of the plot lifecycle can increase rapidly. Many different things can be stored in the plot state, like scrolling position, selected elements, zoom value, etc.&#xA;Basically, that can be any effect of possible user input not directly related to data changes.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
