@@ -4,20 +4,20 @@
         <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Alex Chirkin ">
+<meta name="author" content="Alex Chirkin">
 <meta name="description" content="
 Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
 However, things can get more challenging when your chart requires responsiveness to user actions or data updates. If the application&rsquo;s rendering flow is beyond your control or if you need to implement additional logic to handle actions or updates, the integration task becomes more complex.
 " />
-<meta name="keywords" content="chartexample.com, blog, charts, d3, visualizations, plots, blog, chart, spa, application, data, interface" />
+<meta name="keywords" content="chart, blog, d3, chart.js, examples, blog, chart, spa, application, data, interface" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://chartexample.com/blog/chart-integration/" />
+<link rel="canonical" href="https://alexchirkin.me/blog/chart-integration/" />
 
 
     <title>
         
-            Chart integration for modern web applications :: chartexample.com  — Blog about creating charts and data visualizations
+            Chart integration for modern web applications :: alexchirkin.me 
         
     </title>
 
@@ -40,21 +40,19 @@ However, things can get more challenging when your chart requires responsiveness
 
 
 
-  <meta itemprop="name" content="Chart integration for modern web applications">
-  <meta itemprop="description" content="
-Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
+	<meta itemprop="name" content="Chart integration for modern web applications">
+	<meta itemprop="description" content="Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
 However, things can get more challenging when your chart requires responsiveness to user actions or data updates. If the application’s rendering flow is beyond your control or if you need to implement additional logic to handle actions or updates, the integration task becomes more complex.">
-  <meta itemprop="datePublished" content="2023-06-02T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2023-06-02T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1183">
-  <meta itemprop="image" content="https://chartexample.com/">
-  <meta itemprop="keywords" content="Blog,Chart,Spa,Application,Data,Interface">
+	<meta itemprop="datePublished" content="2023-06-02T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2023-06-02T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1183">
+	<meta itemprop="image" content="https://alexchirkin.me/">
+	<meta itemprop="keywords" content="Blog,Chart,Spa,Application,Data,Interface">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://chartexample.com/">
-  <meta name="twitter:title" content="Chart integration for modern web applications">
-  <meta name="twitter:description" content="
-Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://alexchirkin.me/">
+	<meta name="twitter:title" content="Chart integration for modern web applications">
+	<meta name="twitter:description" content="Introduction Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.
 However, things can get more challenging when your chart requires responsiveness to user actions or data updates. If the application’s rendering flow is beyond your control or if you need to implement additional logic to handle actions or updates, the integration task becomes more complex.">
 
 
@@ -88,7 +86,7 @@ However, things can get more challenging when your chart requires responsiveness
         
             <span class="logo__mark"></span>
             <span class="logo__text ">
-                chartexample.com
+                alexchirkin.me
             </span>
         
     </div>
@@ -129,14 +127,14 @@ However, things can get more challenging when your chart requires responsiveness
         </div>
 
         <article>
-            <h2 class="post-title"><a href="https://chartexample.com/blog/chart-integration/">Chart integration for modern web applications</a></h2>
+            <h2 class="post-title"><a href="https://alexchirkin.me/blog/chart-integration/">Chart integration for modern web applications</a></h2>
 
             
             
             
 
             <div class="post-content">
-                <p><img alt="Chart integration" src="/covers/plot-integration.png"></p>
+                <p><img src="/covers/plot-integration.png" alt="Chart integration"></p>
 <h2 id="introduction">Introduction</h2>
 <p>Integrating a chart into an application may appear easy task at first. If you have a container ready for the chart, all you need to do is include the necessary chart assets in a bundle and use them to render the chart. This approach works well for basic scenarios where you only need to provide data to a chart function and visualize it.</p>
 <p>However, things can get more challenging when your chart requires responsiveness to user actions or data updates. If the application&rsquo;s rendering flow is beyond your control or if you need to implement additional logic to handle actions or updates, the integration task becomes more complex.</p>
@@ -184,7 +182,7 @@ However, things can get more challenging when your chart requires responsiveness
 
 <details>
   <summary>Show React component code</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useEffect</span>, <span style="color:#a6e22e">useRef</span>, <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useEffect</span>, <span style="color:#a6e22e">useRef</span>, <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;./plot&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
@@ -192,16 +190,16 @@ However, things can get more challenging when your chart requires responsiveness
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">setData</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([])
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// creating ref to store a link to Web Component with plot API
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useRef</span>(<span style="color:#66d9ef">null</span>)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useRef</span>(<span style="color:#66d9ef">null</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// adding initial data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">addData</span>()
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">addData</span>()
 </span></span><span style="display:flex;"><span>  }, [])
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// in this useEffect when data is changed
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// update method will be called from plot Web Component API
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// update method will be called from plot Web Component API
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">ref</span>.<span style="color:#a6e22e">current</span>) <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ref</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>)
@@ -230,7 +228,7 @@ However, things can get more challenging when your chart requires responsiveness
 </details>
 <details>
   <summary>Show D3 plot Web Component code</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">d3</span>  <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;d3&#39;</span>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">d3</span>  <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;d3&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strokeColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#d0d4fc&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fillColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#285674&#39;</span>
@@ -242,10 +240,10 @@ However, things can get more challenging when your chart requires responsiveness
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// plot rendering function
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">renderPlot</span>() {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">renderPlot</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// to simplify the solution the plot content will be erased
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// during each render to clear previous state visualisation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>) <span style="color:#66d9ef">return</span>
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// during each render to clear previous state visualisation
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>) <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">plot</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">container</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#39;*&#39;</span>).<span style="color:#a6e22e">remove</span>()
@@ -274,8 +272,8 @@ However, things can get more challenging when your chart requires responsiveness
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// this is a part of Web Component lifecycle
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// this method will be called after component mounting
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">connectedCallback</span>() {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// this method will be called after component mounting
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">connectedCallback</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElementNS</span>(<span style="color:#e6db74">&#34;http://www.w3.org/2000/svg&#34;</span>, <span style="color:#e6db74">&#34;svg&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">renderPlot</span>()
@@ -283,15 +281,15 @@ However, things can get more challenging when your chart requires responsiveness
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// custom API method that must be called on data change
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// to re-render the plot
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// to re-render the plot
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">renderPlot</span>()
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// defining web component so it can be used in the application
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>window.<span style="color:#a6e22e">customElements</span>.<span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#39;d3-plot&#39;</span>, <span style="color:#a6e22e">D3Plot</span>)
+</span></span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">customElements</span>.<span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#39;d3-plot&#39;</span>, <span style="color:#a6e22e">D3Plot</span>)
 </span></span></code></pre></div>
 </details>
 <p>Two major parts of this example are React component and Web Component with plot implementation.</p>
@@ -299,9 +297,9 @@ However, things can get more challenging when your chart requires responsiveness
 <p>Plot Web Component controls plot container mounting and also provides an API for data update handling.
 It also can store any local state that plot needs, like some user input result, calculations related on data, etc.
 Finally, any custom handlers can be added to react on user input, just by assigning them as the element property:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#a6e22e">ref</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">onSelect</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">element</span>) =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">element</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#a6e22e">ref</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">onSelect</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">element</span>) =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">element</span>)
 </span></span></code></pre></div><p>and this function will be available in any place inside of the Web Component</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onSelect</span>(<span style="color:#a6e22e">element</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onSelect</span>(<span style="color:#a6e22e">element</span>)
 </span></span></code></pre></div><p>For highly complex interactions, custom events can be used. These events are part of the native web API and enable seamless event subscription and publication between different modules.</p>
 <p>Some common drawbacks of Web Components usage for plot integration:</p>
 <ul>
@@ -323,12 +321,12 @@ Finally, any custom handlers can be added to react on user input, just by assign
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://chartexample.com/tags/blog/">blog</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/chart/">chart</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/spa/">spa</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/application/">application</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/data/">data</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/interface/">interface</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/blog/">blog</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/chart/">chart</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/spa/">spa</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/application/">application</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/data/">data</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/interface/">interface</a></span>
         
     </p>
 
@@ -344,7 +342,7 @@ Finally, any custom handlers can be added to react on user input, just by assign
     <div class="footer__inner">
         <div class="footer__content">
             
-            <span><a href="https://chartexample.com/">Alex Chirkin</a></span>
+            <span><a href="https://alexchirkin.me/">Alex Chirkin</a></span>
             
             
             
@@ -367,7 +365,7 @@ Finally, any custom handlers can be added to react on user input, just by assign
 
 
 
-<script type="text/javascript" src="/bundle.min.7ca7495aa22edd436bceff17b1818e90c8d5839ec76fc7b2eb66b1952ba886e725976e10d191029ca6fee36fcb7d0c1ae0293698c4cb954ef5ec52f5b5fa3c9d.js" integrity="sha512-fKdJWqIu3UNrzv8XsYGOkMjVg57Hb8ey62axlSuohucll24Q0ZECnKb&#43;42/LfQwa4Ck2mMTLlU717FL1tfo8nQ=="></script>
+<script type="text/javascript" src="/bundle.min.257531934bfbdf8527f52eab4b38eb8211337125b54dae74132499837c006508dae0d544e859d909af1be266d147861c1c1e688de0f7d2cc2f258de78a9b8a6a.js" integrity="sha512-JXUxk0v734Un9S6rSzjrghEzcSW1Ta50EySZg3wAZQja4NVE6FnZCa8b4mbRR4YcHB5ojeD30swvJY3nipuKag=="></script>
 
 
     

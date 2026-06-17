@@ -1,97 +1,103 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on chartexample.com</title>
-    <link>https://chartexample.com/tags/</link>
-    <description>Recent content in Tags on chartexample.com</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 02 Jun 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://chartexample.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Application</title>
-      <link>https://chartexample.com/tags/application/</link>
-      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/application/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blog</title>
-      <link>https://chartexample.com/tags/blog/</link>
-      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/blog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Chart</title>
-      <link>https://chartexample.com/tags/chart/</link>
-      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/chart/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data</title>
-      <link>https://chartexample.com/tags/data/</link>
-      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Interface</title>
-      <link>https://chartexample.com/tags/interface/</link>
-      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/interface/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spa</title>
-      <link>https://chartexample.com/tags/spa/</link>
-      <pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/spa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>D3</title>
-      <link>https://chartexample.com/tags/d3/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/d3/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Lifecycle</title>
-      <link>https://chartexample.com/tags/lifecycle/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/lifecycle/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Plot</title>
-      <link>https://chartexample.com/tags/plot/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/plot/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>State</title>
-      <link>https://chartexample.com/tags/state/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/state/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>About</title>
-      <link>https://chartexample.com/tags/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/about/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Author</title>
-      <link>https://chartexample.com/tags/author/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chartexample.com/tags/author/</guid>
-      <description></description>
-    </item>
-  </channel>
+	<channel>
+		<title>Tags on alexchirkin.me</title>
+		<link>https://alexchirkin.me/tags/</link>
+		<description>Recent content in Tags on alexchirkin.me</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+			<copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+		
+		
+			<lastBuildDate>Fri, 02 Jun 2023 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://alexchirkin.me/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Application</title>
+				<link>https://alexchirkin.me/tags/application/</link>
+				<pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/application/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Blog</title>
+				<link>https://alexchirkin.me/tags/blog/</link>
+				<pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/blog/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Chart</title>
+				<link>https://alexchirkin.me/tags/chart/</link>
+				<pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/chart/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data</title>
+				<link>https://alexchirkin.me/tags/data/</link>
+				<pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/data/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Interface</title>
+				<link>https://alexchirkin.me/tags/interface/</link>
+				<pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/interface/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Spa</title>
+				<link>https://alexchirkin.me/tags/spa/</link>
+				<pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/spa/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>D3</title>
+				<link>https://alexchirkin.me/tags/d3/</link>
+				<pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/d3/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Lifecycle</title>
+				<link>https://alexchirkin.me/tags/lifecycle/</link>
+				<pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/lifecycle/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Plot</title>
+				<link>https://alexchirkin.me/tags/plot/</link>
+				<pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/plot/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>State</title>
+				<link>https://alexchirkin.me/tags/state/</link>
+				<pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/state/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>About</title>
+				<link>https://alexchirkin.me/tags/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/about/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Author</title>
+				<link>https://alexchirkin.me/tags/author/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://alexchirkin.me/tags/author/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

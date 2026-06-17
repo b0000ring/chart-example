@@ -9,15 +9,15 @@
 Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
 Plot internal state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added. And with interactivity usually comes state and with that, the complexity of the plot lifecycle can increase rapidly. Many different things can be stored in the plot state, like scrolling position, selected elements, zoom value, etc. Basically, that can be any effect of possible user input not directly related to data changes.
 " />
-<meta name="keywords" content="chartexample.com, blog, charts, d3, visualizations, plots, blog, d3, state, plot, lifecycle" />
+<meta name="keywords" content="chart, blog, d3, chart.js, examples, blog, d3, state, plot, lifecycle" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://chartexample.com/blog/chart-lifecycle/" />
+<link rel="canonical" href="https://alexchirkin.me/blog/chart-lifecycle/" />
 
 
     <title>
         
-            State in D3 chart lifecycle :: chartexample.com  — Blog about creating charts and data visualizations
+            State in D3 chart lifecycle :: alexchirkin.me 
         
     </title>
 
@@ -40,21 +40,19 @@ Plot internal state When creating a D3 plot to visualize some data it frequently
 
 
 
-  <meta itemprop="name" content="State in D3 chart lifecycle">
-  <meta itemprop="description" content="
-Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
+	<meta itemprop="name" content="State in D3 chart lifecycle">
+	<meta itemprop="description" content="Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
 Plot internal state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added. And with interactivity usually comes state and with that, the complexity of the plot lifecycle can increase rapidly. Many different things can be stored in the plot state, like scrolling position, selected elements, zoom value, etc. Basically, that can be any effect of possible user input not directly related to data changes.">
-  <meta itemprop="datePublished" content="2022-10-23T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2022-10-23T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1904">
-  <meta itemprop="image" content="https://chartexample.com/">
-  <meta itemprop="keywords" content="Blog,D3,State,Plot,Lifecycle">
+	<meta itemprop="datePublished" content="2022-10-23T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2022-10-23T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1904">
+	<meta itemprop="image" content="https://alexchirkin.me/">
+	<meta itemprop="keywords" content="Blog,D3,State,Plot,Lifecycle">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://chartexample.com/">
-  <meta name="twitter:title" content="State in D3 chart lifecycle">
-  <meta name="twitter:description" content="
-Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://alexchirkin.me/">
+	<meta name="twitter:title" content="State in D3 chart lifecycle">
+	<meta name="twitter:description" content="Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application, sometimes it may be unclear how to properly connect the plot and the application. In this article, I describe some ways to update plots with saving their internal state.
 Plot internal state When creating a D3 plot to visualize some data it frequently happens that to improve user experience some interactivity should be added. And with interactivity usually comes state and with that, the complexity of the plot lifecycle can increase rapidly. Many different things can be stored in the plot state, like scrolling position, selected elements, zoom value, etc. Basically, that can be any effect of possible user input not directly related to data changes.">
 
 
@@ -88,7 +86,7 @@ Plot internal state When creating a D3 plot to visualize some data it frequently
         
             <span class="logo__mark"></span>
             <span class="logo__text ">
-                chartexample.com
+                alexchirkin.me
             </span>
         
     </div>
@@ -129,14 +127,14 @@ Plot internal state When creating a D3 plot to visualize some data it frequently
         </div>
 
         <article>
-            <h2 class="post-title"><a href="https://chartexample.com/blog/chart-lifecycle/">State in D3 chart lifecycle</a></h2>
+            <h2 class="post-title"><a href="https://alexchirkin.me/blog/chart-lifecycle/">State in D3 chart lifecycle</a></h2>
 
             
             
             
 
             <div class="post-content">
-                <p><img alt="D3 chart lifecycle" src="/covers/state-lifecycle.png"></p>
+                <p><img src="/covers/state-lifecycle.png" alt="D3 chart lifecycle"></p>
 <p>Integration of D3 data visualizations into front-end applications can be a tricky task, when a plot lifecycle is controlled by the application,
 sometimes it may be unclear how to properly connect the plot and the application.
 In this article, I describe some ways to update plots with saving their internal state.</p>
@@ -174,7 +172,7 @@ Basically, that can be any effect of possible user input not directly related to
 
 <details>
   <summary>show code example</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;node 1&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">children</span><span style="color:#f92672">:</span> [
 </span></span><span style="display:flex;"><span>    {
@@ -270,7 +268,7 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// function changes dataset
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addExample1Data</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addExample1Data</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">push</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;created&#39;</span>
 </span></span><span style="display:flex;"><span>  })
@@ -291,7 +289,7 @@ Basically, that can be any effect of possible user input not directly related to
 
 <details>
   <summary>show code example</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data2</span> <span style="color:#f92672">=</span> {
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data2</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;node 1&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">children</span><span style="color:#f92672">:</span> [
 </span></span><span style="display:flex;"><span>    {
@@ -325,8 +323,8 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">y</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// everything related to state initilization is hidden 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// under first render condition
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">selectChildren</span>().<span style="color:#a6e22e">size</span>()) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// under first render condition
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">selectChildren</span>().<span style="color:#a6e22e">size</span>()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">node</span>().<span style="color:#a6e22e">getBoundingClientRect</span>().<span style="color:#a6e22e">height</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">node</span>().<span style="color:#a6e22e">getBoundingClientRect</span>().<span style="color:#a6e22e">width</span>
 </span></span><span style="display:flex;"><span>
@@ -353,7 +351,7 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// everything related to the update cycle is called every time
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#plot-content&#39;</span>)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#plot-content&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">tree</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">nodeSize</span>([<span style="color:#a6e22e">r</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nodeSeparation</span>, <span style="color:#a6e22e">r</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nodeSeparation</span>])(<span style="color:#a6e22e">nodes</span>)
@@ -439,7 +437,7 @@ Basically, that can be any effect of possible user input not directly related to
 
 <details>
   <summary>show code example</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">updatePlot</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">updatePlot</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data3</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;node 1&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">children</span><span style="color:#f92672">:</span> [
@@ -464,10 +462,10 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// function implements chart rendering
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// example with rendered check
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drawExample3</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drawExample3</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">plot</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#example3&#39;</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// the custom state
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selected</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>();
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selected</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>();
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nodeSeparation</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
 </span></span><span style="display:flex;"><span>
@@ -501,7 +499,7 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot</span>.<span style="color:#a6e22e">select</span>(<span style="color:#e6db74">&#39;#plot-content&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initial call of render function
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">render</span>()
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">render</span>()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderItem</span>(<span style="color:#a6e22e">selection</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">selection</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;use&#39;</span>)
@@ -538,7 +536,7 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// function that updates everything that depends on the data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">render</span>() {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">render</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">hierarchy</span>(<span style="color:#a6e22e">data3</span>, <span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">children</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lnkMkr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">linkHorizontal</span>()
 </span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">x</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>)
@@ -568,21 +566,21 @@ Basically, that can be any effect of possible user input not directly related to
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// returning function that redraws the plot after updating the data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">render</span>
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">render</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// function changes dataset
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addExample3Data</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addExample3Data</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data3</span>.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">push</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;created&#39;</span>
 </span></span><span style="display:flex;"><span>  })
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// calling update function instead of the plot function itself
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">updatePlot</span>()
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">updatePlot</span>()
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">init</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// saving update function somewhere outside the plot after initial render
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">updatePlot</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">drawExample3</span>() 
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">updatePlot</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">drawExample3</span>() 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </details>
@@ -610,23 +608,23 @@ With proper implementation, it is easy to use object methods separately or as a 
 <p><em>How to create a plot as a JavaScript object is a complex topic, which requires an entire article to explain. The code below is just a draft showcase of possible implementation.</em></p>
 <details>
   <summary>show implementation draft</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plot</span> {
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plot</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">data</span>, ...<span style="color:#a6e22e">otherProps</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// common object for internal state
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">state</span>,
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// applying initial data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ...other initial props applying...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>()
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">render</span> <span style="color:#f92672">=</span> () =&gt; {
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ...all the initial rendering logic...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setData</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
@@ -642,7 +640,7 @@ With proper implementation, it is easy to use object methods separately or as a 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">update</span> <span style="color:#f92672">=</span> () =&gt; {
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// ... all the update logic...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">plot</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Plot</span>(<span style="color:#75715e">/*pass initial props here*/</span>)
@@ -681,11 +679,11 @@ With proper implementation, it is easy to use object methods separately or as a 
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://chartexample.com/tags/blog/">blog</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/d3/">d3</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/state/">state</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/plot/">plot</a></span>
-        <span class="tag"><a href="https://chartexample.com/tags/lifecycle/">lifecycle</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/blog/">blog</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/d3/">d3</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/state/">state</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/plot/">plot</a></span>
+        <span class="tag"><a href="https://alexchirkin.me/tags/lifecycle/">lifecycle</a></span>
         
     </p>
 
@@ -701,7 +699,7 @@ With proper implementation, it is easy to use object methods separately or as a 
     <div class="footer__inner">
         <div class="footer__content">
             
-            <span><a href="https://chartexample.com/">Alex Chirkin</a></span>
+            <span><a href="https://alexchirkin.me/">Alex Chirkin</a></span>
             
             
             
@@ -724,7 +722,7 @@ With proper implementation, it is easy to use object methods separately or as a 
 
 
 
-<script type="text/javascript" src="/bundle.min.7ca7495aa22edd436bceff17b1818e90c8d5839ec76fc7b2eb66b1952ba886e725976e10d191029ca6fee36fcb7d0c1ae0293698c4cb954ef5ec52f5b5fa3c9d.js" integrity="sha512-fKdJWqIu3UNrzv8XsYGOkMjVg57Hb8ey62axlSuohucll24Q0ZECnKb&#43;42/LfQwa4Ck2mMTLlU717FL1tfo8nQ=="></script>
+<script type="text/javascript" src="/bundle.min.257531934bfbdf8527f52eab4b38eb8211337125b54dae74132499837c006508dae0d544e859d909af1be266d147861c1c1e688de0f7d2cc2f258de78a9b8a6a.js" integrity="sha512-JXUxk0v734Un9S6rSzjrghEzcSW1Ta50EySZg3wAZQja4NVE6FnZCa8b4mbRR4YcHB5ojeD30swvJY3nipuKag=="></script>
 
 
     
