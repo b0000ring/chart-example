@@ -1,13 +1,13 @@
 +++
-title = "About chartexample.com"
+title = "About alexchirkin.me"
 aliases = ["about","contact"]
 tags = ["blog", "author", "about"]
-description = "About chartexample.com blog and author page"
+description = "About alexchirkin.me blog and author page"
 [ author ]
   name = "Alex Chirkin"
 +++
 
-chartexample.com - my personal blog where I implement different types of charts by using set of javascript (and sometimes other) libraries.
+alexchirkin.me - my personal blog where I implement different types of charts by using set of javascript (and sometimes other) libraries.
 
 You can find information about me on my [LinkedIn](https://www.linkedin.com/in/achirkin) page
 

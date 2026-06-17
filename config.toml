@@ -1,5 +1,5 @@
-baseurl      = "https://chartexample.com"
-title        = "chartexample"
+baseurl      = "https://alexchirkin.me"
+title        = "alexchirkin.me"
 languageCode = "en-us"
 theme        = "chart-example-theme"
 paginate     = 10
@@ -31,19 +31,19 @@ paginate     = 10
     
 [languages]
   [languages.en]
-    title = "chartexample.com"
+    title = "alexchirkin.me"
     subtitle = "Blog about creating charts and data visualizations"
-    keywords = "chartexample.com, blog, charts, d3, visualizations, plots"
+    keywords = "alexchirkin.me, blog, charts, d3, visualizations, plots"
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
-      logoText = "chartexample.com"
+      logoText = "alexchirkin.me"
       logoHomeLink = "/"
     # or
     #
     # path = "/img/your-example-logo.svg"
-    # alt = "chartexample.com"
+    # alt = "alexchirkin.me"
 
   # And you can even create generic menu
   [[menu.main]]
@@ -59,7 +59,7 @@ paginate     = 10
     name       = "About"
     url        = "about/"
 
-[author]
+[params.author]
   name = "Alex Chirkin"
 
 [[params.social]]
